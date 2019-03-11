@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames/bind';
 import styles from './home.component.module.scss';
-import backgroundPic from './background.png';
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +19,6 @@ class HomeComponent extends React.Component<
         <div className={cx('menu-wrapper')}>
           <div className={cx('transparents')}></div>
           <div className={cx('notice')}></div>
-          <div className={cx('notice-banner')}></div>
           <div className={cx('notice-banner')}></div>
           <div className={cx('school-meals')}></div>
           <div className={cx('school-meals-list')}></div>
