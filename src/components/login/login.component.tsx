@@ -1,7 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import welcomePic from './welcomePic.png';
+import classNames from 'classnames/bind';
 import styles from './login.component.module.scss';
+
+const cx = classNames.bind(styles);
 
 const WelcomeWrapperDiv = styled.div`
   height: 100vh;
@@ -77,12 +80,12 @@ class LoginComponent extends React.Component<
       <WelcomeWrapperDiv>
         <GreetingDiv>
           <HelloP>어서와,</HelloP>
-          <HanseiB>한세</HanseiB>친구들
+          <HanseiB>한세</HanseiB> 친구들
           <LoginInputWrapper>
             아이디
-            <input className={styles.loginInput} />
+            <input className={cx('login-input')} />
             비밀번호
-            <input className={styles.loginInput} type='password' />
+            <input className={cx('login-input')} type='password' />
           </LoginInputWrapper>
           <LoginBtn>로그인</LoginBtn>
         </GreetingDiv>
