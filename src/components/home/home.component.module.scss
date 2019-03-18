@@ -1,22 +1,34 @@
 .home-wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  // justify-content: space-between;
   width: 100%;
   height: 100%;
-  background-image: url('./background.png');
+  background-image: url('../../lib/png/background.png');
+
   .menu-wrapper {
-    width: 65%;
-    height: 86.6%;
+    width: 900px;
+    height: 675px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    font-size: 2rem;
 
     .transparents {
       background-color: transparent;
     }
 
     .notice {
-      background-color: #FDB16D;;
+      background-color: #FDB16D;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+
+      // &:hover {
+      //   transform: scale(1.1);
+      // }
     }
 
     .notice-banner {
@@ -27,6 +39,15 @@
 
     .school-meals {
       background-color: #BBDDFF;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+
+      // &:hover {
+      //   transform: scale(1.1);
+      // }
     }
 
     .school-meals-list {
@@ -35,10 +56,28 @@
 
     .class-schedule {
       background-color: #F4F9FF;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+
+      // &:hover {
+      //   transform: scale(1.1);
+      // }
     }
 
     .school-schedule {
       background-color: #FFD2D4;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+
+      // &:hover {
+      //   transform: scale(1.1);
+      // }
     }
 
     .school-schedule-list {
@@ -47,6 +86,16 @@
 
     .test {
       background-color: #FFF6F6;
+      cursor: pointer;
+
+      // &:hover {
+      //   transform: scale(1.1);
+      // }
+    }
+
+    .icons {
+      width: 55%;
+      height: 55%;
     }
   }
 }

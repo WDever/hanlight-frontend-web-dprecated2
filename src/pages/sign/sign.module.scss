@@ -2,6 +2,7 @@
   color: black;
   width: 9rem;
   background-color: #FFDE32;
+  font-weight: normal;
 }
 
 .Login {
@@ -9,7 +10,8 @@
   text-align: center;
   text-decoration: none;
   width: 11rem;
-  background: #0047ff;
+  font-weight: bold;
+  background-color: #6c63ff;
 }
 
 .Btns {
@@ -19,7 +21,7 @@
   outline: none;
   border: none;
   font-size: 1.5rem;
-  font-weight: bold;
+  // font-weight: bold;
   text-decoration: none;
   box-shadow: 0px 4px 12px rgba(0, 71, 255, 0.4);
   border-radius: 48px;

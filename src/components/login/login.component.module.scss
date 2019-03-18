@@ -1,9 +1,35 @@
-.login-input {
+.login-input-wrappers {
   font-size: 2rem;
   background-color: transparent;
   outline: none;
-  border: 0;
-  border-bottom: 1px solid black;
+  border: solid 0.8px #6c63ff;
+  border-radius: 48px;
   margin-bottom: 2rem;
-  width: 45%;
+  width: 30%;
+  height: 100%;
+  color: #6c63ff;
+  display: inline-flex;
+  justify-content: space-around;
+
+  .login-input {
+    color: #6c63ff;
+    width: 80%;
+    font-size: 2rem;
+    border-radius: 48px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+  }
+
+  .ps-icons {
+    // width: 7%;
+    width: 1.5rem;
+    margin: 0.5rem;
+  }
+
+  .id-icons {
+    // width: 11%;
+    width: 2.5rem;
+    // margin: 0.5rem;
+  }
 }

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import welcomePic from './welcomePic.png';
+import Background from '../../lib/svg/SignBackground';
+import test from '../../lib/svg/sign-background.svg';
 import { Link } from 'react-router-dom';
+import styles from './sign.module.scss';
 import classNames from 'classnames/bind';
-import styles from './welcome.component.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -17,18 +18,18 @@ const WelcomeWrapperDiv = styled.div`
 
 const GreetingDiv = styled.div`
   z-index: 1;
-  height: 60%;
+  height: 75%;
   width: 70%;
   font-size: 4rem;
 `;
 
 const HanseiB = styled.b`
   color: #6c63ff;
-  font-weight: normal;
+  font-weight: bold;
 `;
 
 const HelloP = styled.p`
-  font-weight: 900;
+  font-weight: 500;
   margin: 0;
 `;
 
@@ -41,30 +42,24 @@ const WelcomeImgWrapper = styled.div`
 `;
 
 const WelcomeImg = styled.img`
-  width: 55%;
-  height: 70%;
+  position: fixed;
+  top: 370px;
+  left: -50px;
+  width: 60%;
+  height: 60%;
 `;
 
 const BtnWrapper = styled.div`
   z-index: 1;
   display: flex;
   margin-top: 2rem;
-  justify-content: space-around;
-  width: 40%;
+  justify-content: space-between;
+  width: 35%;
   height: 5rem;
 `;
 
 class WelcomeComponent extends React.Component {
-  public loginClick = () => {
-    console.log('Login');
-  };
-
-  public registerClick = () => {
-    console.log('Register');
-  };
-
   public render() {
-    const { loginClick, registerClick } = this;
     return (
       <WelcomeWrapperDiv>
         <GreetingDiv>
@@ -79,9 +74,10 @@ class WelcomeComponent extends React.Component {
             </Link>
           </BtnWrapper>
         </GreetingDiv>
-        <WelcomeImgWrapper>
-          <WelcomeImg src={welcomePic} />
-        </WelcomeImgWrapper>
+        {/* <WelcomeImgWrapper>
+          <WelcomeImg src={test} />
+        </WelcomeImgWrapper> */}
+        <WelcomeImg src={test} />
       </WelcomeWrapperDiv>
     );
   }
