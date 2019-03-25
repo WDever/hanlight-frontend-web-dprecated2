@@ -1,0 +1,22 @@
+.welcome-wrapper {
+  width: 30%;
+  height: 100%;
+  display: inline-flex;
+  position: absolute;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  // justify-content: space-around;
+}
+
+.login-page {
+  transition: left 1s;
+  top: 0px;
+  left: 70%;
+}
+
+.sign-up-page {
+  transition: left 1s;
+  top: 0px;
+  left: 0%;
+}
