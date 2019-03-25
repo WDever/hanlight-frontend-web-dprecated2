@@ -1,123 +1,96 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import welcomePic from '../../lib/svg/sign-background.svg';
-import PasswordIcon from '../../lib/svg/padlock.svg';
-import IdIcon from '../../lib/svg/name.svg';
 import classNames from 'classnames/bind';
 import styles from './login.component.module.scss';
+import LoginImgSrc from '../../lib/svg/login.svg';
+import Welcome from '../welcome';
 
 const cx = classNames.bind(styles);
-
-const WelcomeWrapperDiv = styled.div`
-  height: 100vh;
-  /* width: 100vw; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  overflow: hidden;
-`;
-
-const GreetingDiv = styled.div`
-  z-index: 1;
-  height: 75%;
-  width: 70%;
-  font-size: 4rem;
-`;
-
-const HanseiB = styled.b`
-  color: #6c63ff;
-  font-weight: bold;
-`;
-
-const HelloP = styled.p`
-  font-weight: 500;
-  margin: 0;
-`;
-
-const WelcomeImgWrapper = styled.div`
-  position: fixed;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  width: 100%;
-  height: 100%;
-`;
-
-const WelcomeImg = styled.img`
-  position: fixed;
-  top: 325px;
-  left: 700px;
-  width: 60%;
-  height: 60%;
-`;
-
-const LoginInputForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 100%;
-  height: 60%;
-  margin-top: 2rem;
-  font-size: initial;
-`;
-
-const LoginInputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 40%;
-  margin-top: 2rem;
-  font-size: initial;
-`;
-
-const FindBtns = styled.div`
-  display: flex;
-  color: #6c63ff;
-  font-size: 1rem;
-  justify-content: center;
-  align-items: center;
-  width: 30%;
-  cursor: pointer;
-`;
-
-const LoginBtn = styled.button`
-  outline: none;
-  border: none;
-  font-weight: 500;
-  font-size: 1.5rem;
-  color: white;
-  width: 30%;
-  height: 3rem;
-  box-shadow: 0 4px 12px 0 rgba(0, 71, 255, 0.4);
-  background-color: #6c63ff;
-  border-radius: 48px;
-  cursor: pointer;
-`;
-
-const LoginInputBorder = styled.div`
-  font-size: 2rem;
-  background-color: transparent;
-  outline: none;
-  border: solid 0.8px #6c63ff;
-  border-radius: 48px;
-  margin-bottom: 2rem;
-  width: 45%;
-  height: 100%;
-  color: #6c63ff;
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const LoginInputs = styled.input`
-  color: #6c63ff;
-  width: 90%;
-  font-size: 2rem;
-`;
 
 interface LoginComponentProps {}
 
 interface LoginComponentState {}
+
+const PageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+`;
+
+const LoginWrapper = styled.div`
+  width: 70%;
+  height: 90%;
+  display: inline-flex;
+  flex-direction: column;
+  margin: 4rem 0 0 0;
+`;
+
+const GreetingDiv = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 2.25rem;
+  font-family: 'Roboto';
+  margin-bottom: 2rem;
+`;
+
+const LoginImg = styled.img`
+  width: 12.5rem;
+  height: 12.5rem;
+  margin-bottom: 1rem;
+`;
+
+const LoginInputWrapper = styled.div`
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+const LoginForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+`;
+
+const LoginBtn = styled.button`
+  font-family: 'Roboto';
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 28.125rem;
+  height: 3.375rem;
+  background-color: #6c63ff;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  letter-spacing: 0.5rem;
+`;
+
+const FindBtnsWrapper = styled.div`
+  font-family: 'Roboto';
+  width: 28.125rem;
+  color: #6c63ff;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const FindBtns = styled.button`
+  font-family: 'Roboto';
+  font-size: 1.25rem;
+  color: #6c63ff;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+`;
 
 class LoginComponent extends React.Component<
   LoginComponentProps,
@@ -125,51 +98,30 @@ class LoginComponent extends React.Component<
   > {
   public render() {
     return (
-      <WelcomeWrapperDiv>
+      <LoginWrapper>
         <GreetingDiv>
-          <HelloP>어서와,</HelloP>
-          <HanseiB>한세</HanseiB> 친구들
-          <LoginInputForm
-            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-              e.preventDefault();
-              console.log(e.currentTarget);
-            }}
-          >
-            <LoginInputWrapper>
-              <div className={cx('login-input-wrappers')}>
-                <img src={IdIcon} className={cx('id-icons')} alt='' />
-                <input
-                  type='id'
-                  // placeholder='아이디'
-                  className={cx('login-input')}
-                />
-              </div>
-              <div className={cx('login-input-wrappers')}>
-                <img src={PasswordIcon} className={cx('ps-icons')} alt='' />
-                <input
-                  className={cx('login-input')}
-                  type='password'
-                  // placeholder='비밀먼호'
-                />
-              </div>
-            </LoginInputWrapper>
-            {/* 아이디
-            <LoginInputBorder>
-              <LoginInputs type='id' placeholder='아이디' />
-            </LoginInputBorder>
-            비밀번호
-            <LoginInputBorder>
-              <LoginInputs type='password' placeholder='비밀번호' />
-            </LoginInputBorder> */}
-            <LoginBtn>로그인</LoginBtn>
-            <FindBtns>아이디 찾기 / 비밀번호 찾기</FindBtns>
-          </LoginInputForm>
+          <LoginImg src={LoginImgSrc} alt='' />
+          한빛에 오신 것을 환영합니다
         </GreetingDiv>
-        {/* <WelcomeImgWrapper>
-          <WelcomeImg src={welcomePic} />
-        </WelcomeImgWrapper> */}
-        <WelcomeImg src={welcomePic} />
-      </WelcomeWrapperDiv>
+        <LoginForm>
+          <LoginInputWrapper>
+            <input
+              className={cx('login-inputs')}
+              type='id'
+              placeholder='아이디'
+            />
+            <input
+              className={cx('login-inputs')}
+              type='password'
+              placeholder='비밀번호'
+            />
+          </LoginInputWrapper>
+          <LoginBtn>로그인</LoginBtn>
+          <FindBtnsWrapper>
+            <FindBtns>아이디 찾기</FindBtns>|<FindBtns>비밀번호 찾기</FindBtns>
+          </FindBtnsWrapper>
+        </LoginForm>
+      </LoginWrapper>
     );
   }
 }
