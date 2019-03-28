@@ -53,7 +53,7 @@ export const ReceptionBox = styled.div`
   width: auto;
   height: auto;
   background-color: #ffde32;
-  border-radius: 16px;
+  border-radius: 12px;
   margin: 0.4rem 1rem 0 1rem;
   display: inline-flex;
   justify-content: center;
@@ -62,8 +62,8 @@ export const ReceptionBox = styled.div`
 
 export const ReceptionText = styled.p`
   width: auto;
-  height: 2.25rem;
-  font-size: 1.5rem;
+  height: 1.25rem;
+  font-size: 1.125rem;
   margin: 0.5rem;
 `;
 
@@ -78,7 +78,7 @@ export const SendBox = styled.div`
   width: auto;
   height: auto;
   background-color: #6c63ff;
-  border-radius: 16px;
+  border-radius: 12px;
   margin: 0.4rem 1rem 0 1rem;
   display: inline-flex;
   justify-content: center;
@@ -89,8 +89,8 @@ export const SendText = styled.p`
   width: auto;
   margin: 0.5rem;
   color: white;
-  height: 2.25rem;
-  font-size: 1.5rem;
+  height: 1.25rem;
+  font-size: 1.125rem;
 `;
 
 export const ChatBox = styled.div`
