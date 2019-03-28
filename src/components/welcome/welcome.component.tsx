@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import WelcomeBackgroundImg from '../../lib/png/group-5.png';
 import styles from './welcome.module.scss';
 import classNames from 'classnames/bind';
+import { FadeIn } from '../login';
 
 const cx = classNames.bind(styles);
 
@@ -12,6 +13,10 @@ interface WelcomeComponentProps {
 }
 
 interface WelcomeComponentState {}
+
+interface SCProps {
+  whichPage: boolean;
+}
 
 const WelcomeWrapper = styled.div`
   position: absolute;
@@ -46,6 +51,8 @@ const Greeting = styled.div`
   color: white;
   font-family: 'Roboto';
   font-size: 4rem;
+
+  animation: ${FadeIn} 0.5s;
 `;
 
 const Hansei = styled.b`
@@ -68,6 +75,8 @@ const ChangeBtn = styled.button`
   border: none;
   background-color: #ffde32;
   cursor: pointer;
+
+  animation: ${FadeIn} 0.5s;
 `;
 
 class WelcomeComponent extends React.Component<

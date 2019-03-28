@@ -1,13 +1,14 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import classNames from 'classnames/bind';
 import styles from './login.component.module.scss';
 import LoginImgSrc from '../../lib/svg/login.svg';
-import Welcome from '../welcome';
 
 const cx = classNames.bind(styles);
 
-interface LoginComponentProps {}
+interface LoginComponentProps {
+  whichPage: boolean;
+}
 
 interface LoginComponentState {}
 
@@ -17,12 +18,19 @@ const PageWrapper = styled.div`
   display: flex;
 `;
 
+export const FadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
 const LoginWrapper = styled.div`
   width: 70%;
   height: 90%;
   display: inline-flex;
   flex-direction: column;
   margin: 4rem 0 0 0;
+
+  animation: ${FadeIn} 2.5s;
 `;
 
 const GreetingDiv = styled.div`
@@ -97,8 +105,10 @@ class LoginComponent extends React.Component<
   LoginComponentState
   > {
   public render() {
+    const { whichPage } = this.props;
     return (
       <LoginWrapper>
+        {/* // <div className={cx('login-wrapper')}> */}
         <GreetingDiv>
           <LoginImg src={LoginImgSrc} alt='' />
           한빛에 오신 것을 환영합니다
@@ -121,6 +131,7 @@ class LoginComponent extends React.Component<
             <FindBtns>아이디 찾기</FindBtns>|<FindBtns>비밀번호 찾기</FindBtns>
           </FindBtnsWrapper>
         </LoginForm>
+        {/* // </div> */}
       </LoginWrapper>
     );
   }

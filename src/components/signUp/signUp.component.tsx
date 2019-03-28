@@ -4,14 +4,15 @@ import SignUpImgSrc from '../../lib/svg/signUp.svg';
 import styles from './signUp.module.scss';
 import classNames from 'classnames/bind';
 import CheckBoxImg from '../../lib/svg/check.svg';
+import { FadeIn } from '../login';
 
 const cx = classNames.bind(styles);
 
-interface SignUpComponentProps {};
+interface SignUpComponentProps {}
 
 interface SignUpComponentState {
   check: boolean;
-};
+}
 
 const SignUpWrapper = styled.div`
   width: 70%;
@@ -21,6 +22,8 @@ const SignUpWrapper = styled.div`
   flex-direction: column;
   position: relative;
   left: 30%;
+
+  animation: ${FadeIn} 2.5s;
 `;
 
 const GreetingDiv = styled.div`
@@ -74,7 +77,7 @@ const SignUpBtn = styled.button`
 const TermsWrapper = styled.div`
   font-family: 'Roboto';
   width: 28.125rem;
-  color: #6c63ff;
+  color: black;
   font-size: 1rem;
   display: flex;
   justify-content: flex-end;
@@ -90,19 +93,37 @@ const TermCheckBoxEmpty = styled.img`
   cursor: pointer;
 `;
 
+const TermSpan = styled.span`
+  color: #6c63ff;
+`;
 
-class SignUpComponent extends React.Component<SignUpComponentProps, SignUpComponentState> {
+const PasswordsWrapper = styled.div`
+  width: 28.125rem;
+  height: 3.125rem;
+  /* background-color: transparent; */
+  background-color: rgba(108, 99, 255, 0.15);
+
+  &:focus {
+    background-color: white;
+    border: solid 0.8px #6c63ff;
+  }
+`;
+
+class SignUpComponent extends React.Component<
+  SignUpComponentProps,
+  SignUpComponentState
+  > {
   public state: SignUpComponentState = {
     check: false,
-  }
+  };
 
   public handleClick = () => {
-    this.setState((state) => ({
+    this.setState(state => ({
       check: !state.check,
     }));
-  }
+  };
 
-  public render () {
+  public render() {
     const { check } = this.state;
     const { handleClick } = this;
 
@@ -114,14 +135,48 @@ class SignUpComponent extends React.Component<SignUpComponentProps, SignUpCompon
         </GreetingDiv>
         <SignUpForm>
           <SignUpInputWrapper>
-            <input className={cx('sign-up-inputs')} type='text' placeholder='이름' />
-            <input className={cx('sign-up-inputs')} type='id' placeholder='아이디' />
-            <input className={cx('sign-up-inputs')} type='password' placeholder='비밀번호' />
-            <input className={cx('sign-up-inputs')} type='password' placeholder='비밀번호 재입력' />
-            <input className={cx('sign-up-inputs')} type='pin' placeholder='제공된 핀 번호를 입력해주세요' />
+            <input
+              className={cx('sign-up-inputs')}
+              type='text'
+              placeholder='이름'
+              name='name'
+            />
+            <input
+              className={cx('sign-up-inputs')}
+              type='id'
+              placeholder='아이디'
+              name='id'
+            />
+            {/* <PasswordsWrapper> */}
+            <input
+              className={cx('sign-up-inputs')}
+              type='password'
+              placeholder='비밀번호'
+              name='password'
+            />
+            {/* </PasswordsWrapper> */}
+            {/* <PasswordsWrapper> */}
+            <input
+              className={cx('sign-up-inputs')}
+              type='password'
+              placeholder='비밀번호 재입력'
+              name='passwordConfirm'
+            />
+            {/* </PasswordsWrapper> */}
+            <input
+              className={cx('sign-up-inputs')}
+              type='pin'
+              placeholder='제공된 핀 번호를 입력해주세요'
+              name='pin'
+            />
           </SignUpInputWrapper>
           <TermsWrapper>
-            <TermCheckBoxEmpty src={check ? CheckBoxImg : ''} alt='' onClick={handleClick} /> 약관에 동의합니다.
+            <TermCheckBoxEmpty
+              src={check ? CheckBoxImg : ''}
+              alt=''
+              onClick={handleClick}
+            />
+            <TermSpan>약관</TermSpan>에 동의합니다
           </TermsWrapper>
           <SignUpBtn>회원가입</SignUpBtn>
         </SignUpForm>

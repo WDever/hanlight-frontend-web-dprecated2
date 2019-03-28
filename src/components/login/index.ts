@@ -1,1 +1,1 @@
-export { default } from './login.component';
+export { default, FadeIn } from './login.component';
