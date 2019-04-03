@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import ChatBotIcon from '../../lib/svg/roboto-logo.svg';
+import ChatBotIcon from '../../lib/svg/icon-chat.svg';
+import ChatBotOn from '../../lib/svg/chatbot-on.svg';
 import bubble from '../../lib/svg/speech-bubble.svg';
 
 interface ChatBotProps {}
@@ -19,9 +20,9 @@ interface ChatBotState {
 export const ChatBotBody = styled.div`
   /* overflow: auto; */
   /* position: fixed; */
-  position: absolute;
-  top: 38%;
-  left: 74%; /* macbook pro 13" */
+  position: fixed;
+  top: 36%;
+  left: 73%; /* macbook pro 13" */
   /* top: 47%;
   left: 79%; */ /* 27' monitor 16:9 */
   background-color: white;
@@ -33,15 +34,19 @@ export const ChatBotBody = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 2;
 `;
 
 export const Bubble = styled.img`
   /* position: fixed; */
-  position: absolute;
+  position: fixed;
   top: 88%;
   left: 93%;
   height: 12%;
   cursor: pointer;
+
+  width: 4.5rem;
+  height: 4.5rem;
 `;
 
 export const ReceptionWrapper = styled.div`
@@ -135,10 +140,13 @@ export const ChatBotTopDiv = styled.div`
   /* border-bottom: 0.5px solid #e6e6e6; */
   display: flex;
   align-items: center;
+  color: #6c63ff;
 `;
 
 export const ChatBotImg = styled.img`
   margin: 0.5rem;
+  width: 2.1875rem;
+  height: 2.1875rem;
 `;
 
 class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
@@ -189,29 +197,10 @@ class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
     input: '',
   };
 
-  public ChatScroll: React.RefObject<HTMLDivElement> | null | undefined;
-
-  // public componentDidMount = () => {
-  //   this.ChatScroll = React.createRef();
-  //   console.log(this.ChatScroll);
-  // };
-
-  // public shouldComponentUpdate = () => {
-  //   this.ChatScroll = React.createRef();
-  //   console.log(this.ChatScroll);
-
-  //   return true;
-  // };
-
   public handleToggle = async (): Promise<void> => {
     this.setState(() => ({
       toggle: !this.state.toggle,
     }));
-
-    this.ChatScroll = React.createRef();
-    await console.log(this.ChatScroll);
-    await console.log(this.ChatScroll.current);
-    // await console.log(this.ChatScroll);
   };
 
   public handleEnter = (e: React.FormEvent<HTMLFormElement>) => {
@@ -223,17 +212,16 @@ class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
         type: 'send',
         message: input,
       }),
+      input: ''
     }));
   };
 
   public handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    // this.setState((state) => ({
-    //   input:e.currentTarget.value,
-    // }));
+    const { value } = e.currentTarget;
 
-    this.setState({
-      input: e.currentTarget.value,
-    });
+    this.setState((state) => ({
+      input: value
+    }));
 
     console.log(e.currentTarget.value);
   };
@@ -262,121 +250,15 @@ class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
       }
     });
 
-    //   if (toggle) {
-    //     return (
-    //       <>
-    //         <ChatBotBody>
-    //           <ChatBotTopDiv>
-    //             <ChatBotImg src={ChatBotIcon} alt='' />
-    //             한봇
-    //           </ChatBotTopDiv>
-    //           <ChatBox ref={this.ChatScroll}>
-    //             {chatList}
-    //             {/* <ReceptionWrapper>
-    //               <ReceptionBox>
-    //                 <ReceptionText>테스트</ReceptionText>
-    //               </ReceptionBox>
-    //             </ReceptionWrapper>
-    //             <SendWrapper>
-    //               <SendBox>
-    //                 <SendText>시퍼어저 하늘로우리들ㅇ느 ㅂ려</SendText>
-    //               </SendBox>
-    //             </SendWrapper>
-    //             <SendWrapper>
-    //               <SendBox>
-    //                 <SendText>ㅁ러쟈ㅐ서ㅏㅣ넘랮;ㅓㄴ아ㅣㄹ머ㅐㅑ;러재;</SendText>
-    //               </SendBox>
-    //             </SendWrapper>
-    //             <ReceptionWrapper>
-    //               <ReceptionBox>
-    //                 <ReceptionText>테스트</ReceptionText>
-    //               </ReceptionBox>
-    //             </ReceptionWrapper>
-    //             <ReceptionWrapper>
-    //               <ReceptionBox>
-    //                 <ReceptionText>테스트</ReceptionText>
-    //               </ReceptionBox>
-    //             </ReceptionWrapper>
-    //             <SendWrapper>
-    //               <SendBox>
-    //                 <SendText>ㅁ러쟈ㅐ서ㅏㅣ넘랮;ㅓㄴ아ㅣㄹ머ㅐㅑ;러재;</SendText>
-    //               </SendBox>
-    //             </SendWrapper>
-    //             <ReceptionWrapper>
-    //               <ReceptionBox>
-    //                 <ReceptionText>테스트</ReceptionText>
-    //               </ReceptionBox>
-    //             </ReceptionWrapper>
-    //             <ReceptionWrapper>
-    //               <ReceptionBox>
-    //                 <ReceptionText>테스트</ReceptionText>
-    //               </ReceptionBox>
-    //             </ReceptionWrapper> */}
-    //           </ChatBox>
-    //           <ChatForm onSubmit={handleEnter}>
-    //             <ChatInput
-    //               placeholder='한봇과 안부인사를 해봐요!'
-    //               onChange={handleChange}
-    //               value={input}
-    //             />
-    //           </ChatForm>
-    //         </ChatBotBody>
-    //         <Bubble src={bubble} alt='' onClick={handleToggle} />
-    //       </>
-    //     );
-    //   }
-
-    //   return <Bubble src={bubble} alt='' onClick={handleToggle} />;
-
     return (
       <>
         <ChatBotBody style={{ display: toggle ? 'flex' : 'none' }}>
           <ChatBotTopDiv>
-            <ChatBotImg src={ChatBotIcon} alt='' />
+            <ChatBotImg src={ChatBotOn} alt='' />
             한봇
           </ChatBotTopDiv>
-          <ChatBox ref={this.ChatScroll}>
+          <ChatBox>
             {chatList}
-            {/* <ReceptionWrapper>
-                <ReceptionBox>
-                  <ReceptionText>테스트</ReceptionText>
-                </ReceptionBox>
-              </ReceptionWrapper>
-              <SendWrapper>
-                <SendBox>
-                  <SendText>시퍼어저 하늘로우리들ㅇ느 ㅂ려</SendText>
-                </SendBox>
-              </SendWrapper>
-              <SendWrapper>
-                <SendBox>
-                  <SendText>ㅁ러쟈ㅐ서ㅏㅣ넘랮;ㅓㄴ아ㅣㄹ머ㅐㅑ;러재;</SendText>
-                </SendBox>
-              </SendWrapper>
-              <ReceptionWrapper>
-                <ReceptionBox>
-                  <ReceptionText>테스트</ReceptionText>
-                </ReceptionBox>
-              </ReceptionWrapper>
-              <ReceptionWrapper>
-                <ReceptionBox>
-                  <ReceptionText>테스트</ReceptionText>
-                </ReceptionBox>
-              </ReceptionWrapper>
-              <SendWrapper>
-                <SendBox>
-                  <SendText>ㅁ러쟈ㅐ서ㅏㅣ넘랮;ㅓㄴ아ㅣㄹ머ㅐㅑ;러재;</SendText>
-                </SendBox>
-              </SendWrapper>
-              <ReceptionWrapper>
-                <ReceptionBox>
-                  <ReceptionText>테스트</ReceptionText>
-                </ReceptionBox>
-              </ReceptionWrapper>
-              <ReceptionWrapper>
-                <ReceptionBox>
-                  <ReceptionText>테스트</ReceptionText>
-                </ReceptionBox>
-              </ReceptionWrapper> */}
           </ChatBox>
           <ChatForm onSubmit={handleEnter}>
             <ChatInput
@@ -386,7 +268,7 @@ class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
             />
           </ChatForm>
         </ChatBotBody>
-        <Bubble src={bubble} alt='' onClick={handleToggle} />
+        <Bubble src={ChatBotIcon} alt='' onClick={handleToggle} />
       </>
     );
   }

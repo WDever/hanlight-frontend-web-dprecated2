@@ -13,6 +13,8 @@ const HeaderWrapper = styled.div`
   margin-bottom: 2.5rem;
   color: white;
   justify-content: flex-end;
+
+  z-index: 1;
 `;
 
 const HeaderInnerWrapper = styled.div`

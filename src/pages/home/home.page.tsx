@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames/bind';
+import styled from 'styled-components';
 import styles from './home.module.scss';
 import HeaderComponent from '../../components/header';
 import ChatBot from '../../components/chatbot';
@@ -10,14 +11,25 @@ import notice from '../../lib/svg/notice.svg';
 import schoolMeals from '../../lib/svg/school-meals.svg';
 import classSchedule from '../../lib/svg/schedule.svg';
 import schoolSchedule from '../../lib/svg/school-schedule.svg';
+import TimelinePage from './timeline';
+import BackgroundImg from '../../lib/png/background.png';
+// import Test from '../../lib/svg/bg2.svg';
 
 const cx = classNames.bind(styles);
+
+const Background = styled.img`
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  position: absolute;
+`;
 
 const HomePage: React.SFC<{}> = () => {
   return (
     <>
       <div className={cx('home-wrapper')}>
         <HeaderComponent />
+        <Background src={BackgroundImg} alt='' />
         <div className={cx('menu-template')}>
           <div className={cx('menu-wrapper')}>
             <div className={cx('transparents')} />
@@ -49,6 +61,7 @@ const HomePage: React.SFC<{}> = () => {
           </div>
         </div>
       </div>
+      <TimelinePage />
       <ChatBot />
     </>
   );
