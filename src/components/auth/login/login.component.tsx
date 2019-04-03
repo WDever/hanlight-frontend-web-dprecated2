@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import classNames from 'classnames/bind';
 import styles from './login.component.module.scss';
-import LoginImgSrc from '../../lib/svg/login.svg';
+import LoginImgSrc from '../../../lib/svg/login.svg';
 
 const cx = classNames.bind(styles);
 

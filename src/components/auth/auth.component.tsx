@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import LoginComponent from '../../components/login';
-import SignUpComponent from '../../components/signUp';
-import Welcome from '../../components/welcome';
+import LoginComponent from './login';
+import SignUpComponent from './phoneCheck';
+import Welcome from './welcome';
 
-interface SignContainerProps {}
+interface SignComponentProps {}
 
-interface SignContainerState {
+interface SignComponentState {
   whichPage: boolean;
 }
 
@@ -15,11 +15,11 @@ const PageWrapper = styled.div`
   height: 100%;
 `;
 
-class SignContainer extends React.Component<
-  SignContainerProps,
-  SignContainerState
+class SignComponent extends React.Component<
+  SignComponentProps,
+  SignComponentState
   > {
-  public state: SignContainerState = {
+  public state: SignComponentState = {
     whichPage: true,
   };
 
@@ -51,4 +51,4 @@ class SignContainer extends React.Component<
   }
 }
 
-export default SignContainer;
+export default SignComponent;

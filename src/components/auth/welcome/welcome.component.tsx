@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import WelcomeBackgroundImg from '../../lib/png/group-5.png';
+import WelcomeBackgroundImg from '../../../lib/png/group-5.png';
 import styles from './welcome.module.scss';
 import classNames from 'classnames/bind';
 import { FadeIn } from '../login';
