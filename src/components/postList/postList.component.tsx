@@ -18,7 +18,7 @@ interface PostListComponentState {
 const PostListWrapper = styled.div`
   width: 50rem;
   height: 25rem;
-  overflow: scroll;
+  /* overflow: scroll; */
 `;
 
 class PostListComponent extends React.Component<
