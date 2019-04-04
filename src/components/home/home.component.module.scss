@@ -1,0 +1,50 @@
+.home-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-image: url('./background.png');
+  .menu-wrapper {
+    width: 65%;
+    height: 86.6%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    .transparents {
+      background-color: transparent;
+    }
+
+    .notice {
+      background-color: #FDB16D;;
+    }
+
+    .notice-banner {
+      background-color: #FFE6CF;
+    }
+
+    .school-meals {
+      background-color: #BBDDFF;
+    }
+
+    .school-meals-list {
+      background-color: #E2F1FF;
+    }
+
+    .class-schedule {
+      background-color: #F4F9FF;
+    }
+
+    .school-schedule {
+      background-color: #FFD2D4;
+    }
+
+    .school-schedule-list {
+      background-color: #ffe2e4
+    }
+
+    .test {
+      background-color: #FFF6F6;
+    }
+  }
+}
