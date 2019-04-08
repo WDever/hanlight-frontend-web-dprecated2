@@ -19,6 +19,7 @@ module.exports = {
     "no-unused-vars": 0,
     "@typescript-eslint/no-empty-interface": 0,
     "prettier/prettier": 0,
+    "@typescript-eslint/no-parameter-properties": 0,
     // "@typescript-eslint/no-unused-vars": 0,
     // "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
   },
