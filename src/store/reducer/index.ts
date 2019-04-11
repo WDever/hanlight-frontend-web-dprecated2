@@ -1,5 +1,10 @@
-// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
+import { phoneCheckReducer } from './phoneCheck.reducer';
+import { registerReducer } from './register.reducer';
 
-// const reducer = combineReducers({});
+const reducer = combineReducers({
+  phoneCheck: phoneCheckReducer,
+  register: registerReducer,
+});
 
-// export { reducer };
+export { reducer };

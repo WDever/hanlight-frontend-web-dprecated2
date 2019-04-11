@@ -1,3 +1,2 @@
-// interface IAction {}
-
-// export default IAction;
+export * from './phoneCheck.action';
+export * from './register.action';

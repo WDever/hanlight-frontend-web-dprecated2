@@ -1,3 +1,7 @@
-// interface IAppState {}
+import { PhoneCheckModel } from "./phoneCheck.model";
+import { RegisterModel } from './register.model';
 
-// export { IAppState };
+export interface AppState {
+  phoneCheck: PhoneCheckModel;
+  register: RegisterModel;
+}
