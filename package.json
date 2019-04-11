@@ -15,7 +15,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-facebook-account-kit": "^0.1.5",
-    "react-redux": "^6.0.1",
+    "react-redux": "^7.0.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
@@ -40,7 +40,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@types/react-redux": "^7.0.3",
+    "@types/react-redux": "^7.0.6",
     "@types/react-router-dom": "^4.3.1",
     "@types/redux": "^3.6.0",
     "@types/redux-saga": "^0.10.5",
