@@ -7,7 +7,6 @@ import LoginImgSrc from '../../../lib/svg/login.svg';
 const cx = classNames.bind(styles);
 
 interface LoginComponentProps {
-  whichPage: boolean;
 }
 
 interface LoginComponentState {}
@@ -40,7 +39,8 @@ const GreetingDiv = styled.div`
   align-items: center;
   justify-content: space-around;
   font-size: 2.25rem;
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
+  font-weight: bold;
   margin-bottom: 2rem;
 `;
 
@@ -69,9 +69,9 @@ const LoginForm = styled.form`
 `;
 
 const LoginBtn = styled.button`
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 800;
   width: 28.125rem;
   height: 3.375rem;
   background-color: #6c63ff;
@@ -82,7 +82,7 @@ const LoginBtn = styled.button`
 `;
 
 const FindBtnsWrapper = styled.div`
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
   width: 28.125rem;
   color: #6c63ff;
   font-size: 1.25rem;
@@ -91,7 +91,7 @@ const FindBtnsWrapper = styled.div`
 `;
 
 const FindBtns = styled.button`
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
   font-size: 1.25rem;
   color: #6c63ff;
   background-color: transparent;
@@ -105,7 +105,6 @@ class LoginComponent extends React.Component<
   LoginComponentState
   > {
   public render() {
-    const { whichPage } = this.props;
     return (
       <LoginWrapper>
         {/* // <div className={cx('login-wrapper')}> */}

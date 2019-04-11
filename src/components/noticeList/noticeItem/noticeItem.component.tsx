@@ -26,6 +26,7 @@ const NoticeTitle = styled.span`
   font-family: 'Roboto';
   font-size: 1.25rem;
   margin-left: 0.5rem;
+  text-indent: 0.5rem;
 `;
 
 const EtcWrapper = styled.div`

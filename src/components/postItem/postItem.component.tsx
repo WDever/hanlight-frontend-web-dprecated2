@@ -120,7 +120,8 @@ const UserProfilePic = styled.img`
 `;
 
 const CommentInput = styled.input`
-  width: 35.125rem;
+  /* width: 35.125rem; */
+  width: 38rem;
   height: 3.125rem;
 
   border: solid 0.8px #a4a4a4;
@@ -129,6 +130,7 @@ const CommentInput = styled.input`
 
   ::placeholder {
     color: #d3d3d3;
+    text-indent: 0.5rem;
   }
 `;
 

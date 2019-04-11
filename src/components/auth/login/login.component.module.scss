@@ -26,28 +26,28 @@
     animation: fadeIn 2s forwards;
   }
 
-  .login-inputs {
-    color: #6c63ff;
-    font-family: 'Roboto';
-    font-size: 1.125rem;
-    text-indent: 1.5rem;
-    width: 28.125rem;
-    height: 3.125rem;
-    background-color: rgba(108, 99, 255, 0.15);
+  // .login-inputs {
+  //   color: #6c63ff;
+  // font-family: 'NanumSquare';
+  //   font-size: 1.125rem;
+  //   text-indent: 1.5rem;
+  //   width: 28.125rem;
+  //   height: 3.125rem;
+  //   background-color: rgba(108, 99, 255, 0.15);
 
-    outline: none;
-    border: none;
+  //   outline: none;
+  //   border: none;
 
-    &::placeholder {
-      color: #6c63ff;
-      text-indent: 1.5rem;
-    }
+  //   &::placeholder {
+  //     color: #6c63ff;
+  //     text-indent: 1.5rem;
+  //   }
 
-    &:focus {
-      background-color: white;
-      border: solid 0.8px #6c63ff;
-    }
-  }
+  //   &:focus {
+  //     background-color: white;
+  //     border: solid 0.8px #6c63ff;
+  //   }
+  // }
 }
 
 .fade-in {
@@ -57,24 +57,25 @@
 }
 
 .login-inputs {
+  color: #6c63ff;
+  font-family: 'NanumSquare';
+  font-size: 1.125rem;
+  text-indent: 1.5rem;
+  width: 28.125rem;
+  height: 3.125rem;
+  background-color: rgba(108, 99, 255, 0.15);
+
+  outline: none;
+  border: none;
+
+  &::placeholder {
+    font-family: 'NanumSquare';
     color: #6c63ff;
-    font-family: 'Roboto';
-    font-size: 1.125rem;
     text-indent: 1.5rem;
-    width: 28.125rem;
-    height: 3.125rem;
-    background-color: rgba(108, 99, 255, 0.15);
-
-    outline: none;
-    border: none;
-
-    &::placeholder {
-      color: #6c63ff;
-      text-indent: 1.5rem;
-    }
-
-    &:focus {
-      background-color: white;
-      border: solid 0.8px #6c63ff;
-    }
   }
+
+  &:focus {
+    background-color: white;
+    border: solid 0.8px #6c63ff;
+  }
+}

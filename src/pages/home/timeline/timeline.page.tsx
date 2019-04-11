@@ -9,10 +9,10 @@ import NoticeList from '../../../components/noticeList';
 const TimeLineWrapper = styled.div`
   background-color: #f2f4f7;
   width: 100%;
-  min-height: 100%;
-  /* height: auto; */
+  /* min-height: 100%; */
+  height: auto;
 
-  overflow: scroll;
+  /* overflow: scroll; */
 
   display: inline-flex;
   flex-direction: column;

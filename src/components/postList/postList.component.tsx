@@ -16,9 +16,19 @@ interface PostListComponentState {
 }
 
 const PostListWrapper = styled.div`
-  width: 50rem;
+  width: 100%;
   height: 25rem;
   /* overflow: scroll; */
+`;
+
+const PostListDiv = styled.div`
+  width: 100%;
+  height: auto;
+  background-color: #f2f4f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 class PostListComponent extends React.Component<
@@ -62,7 +72,7 @@ class PostListComponent extends React.Component<
     });
     return (
       <PostListWrapper>
-        {postList}
+        <PostListDiv>{postList}</PostListDiv>
       </PostListWrapper>
     );
   }

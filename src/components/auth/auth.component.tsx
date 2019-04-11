@@ -1,8 +1,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import LoginComponent from './login';
-import SignUpComponent from './phoneCheck';
+import PhoneCheckComponent from './phoneCheck';
+import PhoneCheckContainer from '../../container/phoneCheck';
 import Welcome from './welcome';
+import { Route } from 'react-router-dom';
+import RegisterComponent from './register';
 
 interface SignComponentProps {}
 
@@ -36,15 +39,17 @@ class SignComponent extends React.Component<
     if (whichPage === true) {
       return (
         <PageWrapper>
-          <LoginComponent whichPage={whichPage} />
+          <LoginComponent />
           <Welcome whichPage={whichPage} handleClick={handleClick} />
+          {/* <Route exact path='auth/register' component={RegisterComponent} /> */}
         </PageWrapper>
       );
     } else {
       return (
         <PageWrapper>
-          <SignUpComponent />
+          <PhoneCheckContainer />
           <Welcome whichPage={whichPage} handleClick={handleClick} />
+          {/* <Route exact path='auth/register' component={RegisterComponent} /> */}
         </PageWrapper>
       );
     }

@@ -49,7 +49,8 @@ const Greeting = styled.div`
   width: auto;
   height: auto;
   color: white;
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
+  font-weight: bold;
   font-size: 4rem;
 
   animation: ${FadeIn} 0.5s;
@@ -67,7 +68,7 @@ const ChangeBtn = styled.button`
   z-index: 1;
   width: 14.75rem;
   height: 3.375rem;
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
   font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 4.8px;

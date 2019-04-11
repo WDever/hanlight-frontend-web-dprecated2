@@ -11,6 +11,7 @@ const HeaderWrapper = styled.div`
   height: 5%;
   background-color: transparent;
   margin-bottom: 2.5rem;
+  margin-top: 0.5rem;
   color: white;
   justify-content: flex-end;
 

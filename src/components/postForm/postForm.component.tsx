@@ -14,6 +14,7 @@ const PostForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin: 3% 0;
 `;
 
 const ProfilePic = styled.img`
