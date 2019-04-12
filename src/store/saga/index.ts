@@ -1,9 +1,9 @@
 import { all } from 'redux-saga/effects';
-import { phoneCheckSaga } from './phoneCheck.saga';
+// import { phoneCheckSaga } from './phoneCheck.saga';
 import { registerSaga } from './register.saga';
 
 function* rootSaga() {
-  yield all([phoneCheckSaga(), registerSaga()]);
+  yield all([registerSaga()]);
 }
 
 export { rootSaga };
