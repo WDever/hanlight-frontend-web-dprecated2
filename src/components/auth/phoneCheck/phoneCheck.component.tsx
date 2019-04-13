@@ -180,6 +180,7 @@ class PhoneCheckComponent extends React.Component<
     } else if (verifyStatus === 'failure') {
       console.log(verifyStatus);
       alert('실패!');
+      history.push('/auth/register'); // for test
     }
   };
 
@@ -207,7 +208,7 @@ class PhoneCheckComponent extends React.Component<
               className={cx('sign-up-inputs')}
               type='text'
               placeholder='제공된 핀 번호를 입력해주세요'
-              name='pin'
+              name='signKey'
               autoComplete='off'
               onChange={handleChange}
             />

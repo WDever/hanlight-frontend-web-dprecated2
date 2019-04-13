@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import { phoneCheckReducer } from './phoneCheck.reducer';
+// import { phoneCheckReducer } from './phoneCheck.reducer';
 import { registerReducer } from './register.reducer';
 
 const reducer = combineReducers({
-  phoneCheck: phoneCheckReducer,
+  // phoneCheck: phoneCheckReducer,
   register: registerReducer,
 });
 

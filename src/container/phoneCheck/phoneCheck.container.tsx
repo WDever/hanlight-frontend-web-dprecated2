@@ -4,12 +4,11 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import {
   AppState,
-  phoneCheckActions,
-  phoneCheckReducerActions,
   PinType,
   PhoneCheckResType,
   VerifyPhoneParams,
-  VerifyPhoneRes
+  registerReducerActions,
+  registerActions
 } from '../../store';
 import { PhoneCheckModel } from '../../store/model/phoneCheck.model';
 import { connect } from 'react-redux';
@@ -49,18 +48,18 @@ PhoneCheckContainerProps & PhoneCheckMethod & RouteComponentProps
   );
 };
 
-const mapStateToProps = ({ phoneCheck }: AppState) => ({
-  signKey: phoneCheck.signKey,
-  getStateStatus: phoneCheck.getStateStatus,
-  state: phoneCheck.state,
-  code: phoneCheck.code,
-  verifyStatus: phoneCheck.verifyStatus,
+const mapStateToProps = ({ register }: AppState) => ({
+  signKey: register.signKey,
+  getStateStatus: register.getStateStatus,
+  state: register.state,
+  code: register.code,
+  verifyStatus: register.verifyStatus,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<phoneCheckReducerActions>) => ({
-  getState: bindActionCreators(phoneCheckActions.getState, dispatch),
-  getCode: bindActionCreators(phoneCheckActions.getCode, dispatch),
-  verifyPhone: bindActionCreators(phoneCheckActions.verifyPhone, dispatch),
+const mapDispatchToProps = (dispatch: Dispatch<registerReducerActions>) => ({
+  getState: bindActionCreators(registerActions.getState, dispatch),
+  getCode: bindActionCreators(registerActions.getCode, dispatch),
+  verifyPhone: bindActionCreators(registerActions.verifyPhone, dispatch),
 });
 
 export default withRouter(

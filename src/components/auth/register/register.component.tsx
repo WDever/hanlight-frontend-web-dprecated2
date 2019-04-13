@@ -98,7 +98,7 @@ class RegisterComponent extends React.Component<
 
     console.log(this.props);
 
-    // register({ id, password, signKey })
+    register({ id, password, signKey })
   }
 
   public render() {
