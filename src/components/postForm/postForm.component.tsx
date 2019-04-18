@@ -15,6 +15,7 @@ const PostForm = styled.form`
   align-items: center;
   justify-content: space-around;
   margin: 3% 0;
+  font-family: 'NanumSquare';
 `;
 
 const ProfilePic = styled.img`
@@ -22,7 +23,7 @@ const ProfilePic = styled.img`
   height: 4.0625rem;
   border-radius: 50%;
 
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 const PostInput = styled.input`
@@ -32,6 +33,7 @@ const PostInput = styled.input`
 
   border: none;
   outline: none;
+  font-family: 'NanumSquare';
 
   margin-right: 1rem;
 `;

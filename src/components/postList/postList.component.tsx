@@ -18,6 +18,7 @@ interface PostListComponentState {
 const PostListWrapper = styled.div`
   width: 100%;
   height: 25rem;
+  font-family: 'NanumSquare';
   /* overflow: scroll; */
 `;
 
@@ -29,6 +30,7 @@ const PostListDiv = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: 'NanumSquare';
 `;
 
 class PostListComponent extends React.Component<

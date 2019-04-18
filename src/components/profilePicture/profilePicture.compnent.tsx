@@ -13,7 +13,7 @@ const ProfilePictureImg = styled.img`
   border-radius: 50%;
   cursor: pointer;
 
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 class ProfilePictureComponent extends React.Component<ProfilePictureComponentProps, ProfilePictureComponentState> {
