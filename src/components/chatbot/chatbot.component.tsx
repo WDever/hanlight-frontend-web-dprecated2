@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import ChatBotIcon from '../../lib/svg/icon-chat.svg';
-import ChatBotOn from '../../lib/svg/chatbot-on.svg';
+// import ChatBotIcon from '../../lib/svg/icon-chat.svg';
+import ChatBotIcon from '../../lib/svg/chatbot-icon.svg';
 import bubble from '../../lib/svg/speech-bubble.svg';
 
 interface ChatBotProps {}
@@ -153,30 +153,30 @@ class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
   public state: ChatBotState = {
     toggle: false,
     ChatList: [
-      {
-        type: 'send',
-        message: 'Send Test',
-      },
-      {
-        type: 'send',
-        message: 'Send Test',
-      },
-      {
-        type: 'receive',
-        message: 'Receive Test',
-      },
-      {
-        type: 'receive',
-        message: 'Receive Test',
-      },
-      {
-        type: 'receive',
-        message: 'Receive Test',
-      },
-      {
-        type: 'send',
-        message: 'Send Test',
-      },
+      // {
+      //   type: 'send',
+      //   message: 'Send Test',
+      // },
+      // {
+      //   type: 'send',
+      //   message: 'Send Test',
+      // },
+      // {
+      //   type: 'receive',
+      //   message: 'Receive Test',
+      // },
+      // {
+      //   type: 'receive',
+      //   message: 'Receive Test',
+      // },
+      // {
+      //   type: 'receive',
+      //   message: 'Receive Test',
+      // },
+      // {
+      //   type: 'send',
+      //   message: 'Send Test',
+      // },
       {
         type: 'send',
         message: 'Send Test',
@@ -254,7 +254,7 @@ class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
       <>
         <ChatBotBody style={{ display: toggle ? 'flex' : 'none' }}>
           <ChatBotTopDiv>
-            <ChatBotImg src={ChatBotOn} alt='' />
+            <ChatBotImg src={ChatBotIcon} alt='' />
             한봇
           </ChatBotTopDiv>
           <ChatBox>

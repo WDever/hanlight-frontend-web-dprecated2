@@ -8,10 +8,9 @@ import {
   PhoneCheckContainerProps,
   PhoneCheckMethod,
 } from '../../../container/phoneCheck';
-import { RouteComponentProps, Route, Link } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import { PhoneCheckResType } from '../../../store';
 import AccoutKit from 'react-facebook-account-kit';
-import RegisterComponent from '../register';
 
 const cx = classNames.bind(styles);
 
@@ -19,6 +18,10 @@ interface PhoneCheckComponentState {
   check: boolean;
   signKey: string;
   phone: string;
+}
+
+export interface StyledComponentsProps {
+  active: boolean;
 }
 
 const PhoneCheckWrapper = styled.div`
@@ -79,9 +82,13 @@ const NextBtn = styled.button`
   font-weight: bold;
   width: 28.125rem;
   height: 3.375rem;
-  background-color: #6c63ff;
+  /* background-color: #6c63ff;
+  background-color: rgba(108, 99, 255, 0.25); */
+  background-color: ${(props: StyledComponentsProps) =>
+    props.active ? '#6c63ff' : 'rgba(108, 99, 255, 0.25)'};
   color: white;
   outline: none;
+  border: none;
   cursor: pointer;
   letter-spacing: 0.5rem;
   display: inline-flex;
@@ -146,6 +153,13 @@ class PhoneCheckComponent extends React.Component<
     console.log(signKey, phone);
 
     // getState({ pin: pin, test: 'test' });
+    // getState(signKey);
+  };
+
+  public test = () => {
+    const { getState } = this.props;
+    const { signKey } = this.state;
+
     getState(signKey);
   };
 
@@ -158,15 +172,18 @@ class PhoneCheckComponent extends React.Component<
     await this.verifyPhone();
   };
 
-  public verifyPhone = async () => {
-    const { state, code, verifyPhone } = this.props;
+  public verifyPhone = () => {
+    const { state, code, verifyPhone, getCodeStatus } = this.props;
     const { signKey } = this.state;
 
     // await verifyPhone({ state, code, signKey });
     // await console.log(verifyStatus);
-    await verifyPhone({ state, code, signKey });
-
-    await this.afterPhoneCheck();
+    if (getCodeStatus === 'PARTIALLY_AUTHENTICATED') {
+      console.log(state);
+      console.log(code);
+      console.log(signKey);
+      verifyPhone({ code, state, signKey });
+    }
   };
 
   public afterPhoneCheck = () => {
@@ -183,17 +200,21 @@ class PhoneCheckComponent extends React.Component<
     }
   };
 
-  public componentDidUpdate = (prevProps: PhoneCheckContainerProps & PhoneCheckMethod) => {
-    const { verifyStatus } = this.props;
+  public componentDidUpdate = (
+    prevProps: PhoneCheckContainerProps & PhoneCheckMethod,
+  ) => {
+    const { verifyStatus, getCodeStatus } = this.props;
     if (verifyStatus !== prevProps.verifyStatus) {
       this.afterPhoneCheck();
     }
-  }
-  
+
+    // if (getCodeStatus !== prevProps.getCodeStatus && (getCodeStatus ))
+  };
 
   public render() {
     const { phone } = this.state;
-    const { handleChange, handleSubmit, handleResponse } = this;
+    const { handleChange, handleSubmit, handleResponse, test } = this;
+    const { state, getStateStatus } = this.props;
 
     return (
       <PhoneCheckWrapper>
@@ -207,9 +228,10 @@ class PhoneCheckComponent extends React.Component<
               className={cx('sign-up-inputs')}
               type='text'
               placeholder='제공된 핀 번호를 입력해주세요'
-              name='pin'
+              name='signKey'
               autoComplete='off'
               onChange={handleChange}
+              onBlur={test}
             />
             <input
               type='tel'
@@ -225,19 +247,27 @@ class PhoneCheckComponent extends React.Component<
               회원가입 시 <TermSpan>&nbsp;이용약관</TermSpan> 과
               <TermSpan>&nbsp;개인정보 이용 약관</TermSpan>에 동의하게 됩니다.
             </TermsWrapper>
-            <AccoutKit
-              appId='642150319596855'
-              csrf={'457c944d50d2b25cf70ac591c81e3103'}
-              debug
-              version='v1.0'
-              phoneNumber={phone}
-              onResponse={handleResponse}
-              language='ko_KR'
-            >
-              {(p: Function) => {
-                return <NextBtn {...p}>다음</NextBtn>;
-              }}
-            </AccoutKit>
+            {getStateStatus === 'success' && phone !== '' ? (
+              <AccoutKit
+                appId='265056484381541'
+                csrf={state}
+                debug
+                version='v1.1'
+                phoneNumber={phone}
+                onResponse={handleResponse}
+                language='ko_KR'
+              >
+                {(p: Function) => {
+                  return (
+                    <NextBtn active {...p}>
+                      다음
+                    </NextBtn>
+                  );
+                }}
+              </AccoutKit>
+            ) : (
+              <NextBtn active={false}>다음</NextBtn>
+            )}
           </TermsBtnWrapper>
         </Form>
       </PhoneCheckWrapper>

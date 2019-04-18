@@ -43,14 +43,14 @@ const ProfileNameWrapper = styled.div`
 
 const ProfileNameP = styled.p`
   font-size: 1.5rem;
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
   margin: 0;
 `;
 
 const ProfileDate = styled.p`
   color: #979797;
   font-size: 1.25rem;
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
   margin: 0;
 `;
 
@@ -66,7 +66,7 @@ const PostContent = styled.div`
   width: 46.5625rem;
   height: auto;
   background-color: white;
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
   font-size: 1.5rem;
   margin: 0.5rem 0;
 `;
@@ -74,7 +74,7 @@ const PostContent = styled.div`
 const MorePost = styled.span`
   color: #8a8a8f;
   font-size: 1.25rem;
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
   cursor: pointer;
 `;
 
@@ -84,7 +84,7 @@ const LikeListWrapper = styled.div`
   background-color: white;
   font-size: 1.25rem;
   color: #8a8a8f;
-  font-family: 'Roboto';
+  font-family: 'NanumSquare';
 
   display: flex;
   align-items: center;
@@ -127,10 +127,12 @@ const CommentInput = styled.input`
   border: solid 0.8px #a4a4a4;
 
   font-size: 1.5rem;
+  font-family: 'NanumSquare';
 
   ::placeholder {
     color: #d3d3d3;
     text-indent: 0.5rem;
+    font-family: 'NanumSquare';
   }
 `;
 
@@ -163,7 +165,7 @@ class PostItem extends React.Component<PostItemProps, PostItemState> {
         </LikeListWrapper>
         <CommentWrapper>
           <UserProfilePic src={test} />
-          <CommentInput type='text' placeholder='댓글을 입력하세요'/>
+          <CommentInput type='text' placeholder='댓글을 입력하세요' />
           <LikeBtn src={EmptyLike} />
         </CommentWrapper>
       </PostItemDiv>

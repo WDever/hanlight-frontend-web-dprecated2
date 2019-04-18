@@ -1,15 +1,21 @@
 import * as React from 'react';
+import { LoginMethod } from '../../../container/login';
 import styled, { keyframes } from 'styled-components';
+import { RouteComponentProps } from 'react-router-dom';
+import { LoginContainerProps } from '../../../container/login';
 import classNames from 'classnames/bind';
 import styles from './login.component.module.scss';
 import LoginImgSrc from '../../../lib/svg/login.svg';
+import { StyledComponentsProps } from '../phoneCheck/';
 
 const cx = classNames.bind(styles);
 
-interface LoginComponentProps {
-}
+interface LoginComponentProps {}
 
-interface LoginComponentState {}
+interface LoginComponentState {
+  id: string;
+  password: string;
+}
 
 const PageWrapper = styled.div`
   width: 100%;
@@ -74,9 +80,11 @@ const LoginBtn = styled.button`
   font-weight: 800;
   width: 28.125rem;
   height: 3.375rem;
-  background-color: #6c63ff;
+  background-color: ${(props: StyledComponentsProps) =>
+    props.active ? '#6c63ff' : 'rgba(108, 99, 255, 0.25)'};
   color: white;
   outline: none;
+  border: none;
   cursor: pointer;
   letter-spacing: 0.5rem;
 `;
@@ -101,36 +109,94 @@ const FindBtns = styled.button`
 `;
 
 class LoginComponent extends React.Component<
-  LoginComponentProps,
+  LoginContainerProps & LoginMethod & RouteComponentProps,
   LoginComponentState
   > {
+  public state: LoginComponentState = {
+    id: '',
+    password: '',
+  }
+
+  public handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget;
+    this.setState(state => ({
+      ...state,
+      [name]: value,
+    }));
+
+    console.log(this.state);
+  };
+
+  public handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const { login } = this.props;
+    const { id, password } = this.state;
+    e.preventDefault();
+
+    console.log(this.props);
+    console.log(this.state);
+
+    login({ id, password });
+  };
+
+  public afterLogin = () => {
+    const { history, loginStatus } = this.props;
+
+    console.log(loginStatus);
+
+    if (loginStatus === 'success') {
+      console.log(loginStatus);
+      history.push('/');
+    } else if (loginStatus === 'failure') {
+      console.log(loginStatus);
+      alert('로그인 실패');
+      history.push('/');
+    }
+    console.log(loginStatus);
+  };
+
+  public componentDidUpdate = (prevProps: LoginContainerProps) => {
+    const { loginStatus } = this.props;
+    if (loginStatus !== prevProps.loginStatus && (loginStatus === 'success' || loginStatus === 'failure')) {
+      console.log(prevProps);
+      console.log(this.props);
+      this.afterLogin();
+    }
+  };
+
   public render() {
+    const { handleSubmit, handleChange } = this;
+    const { id, password } = this.state;
+
     return (
       <LoginWrapper>
-        {/* // <div className={cx('login-wrapper')}> */}
         <GreetingDiv>
           <LoginImg src={LoginImgSrc} alt='' />
           한빛에 오신 것을 환영합니다
         </GreetingDiv>
-        <LoginForm>
+        <LoginForm onSubmit={handleSubmit}>
           <LoginInputWrapper>
             <input
               className={cx('login-inputs')}
               type='id'
               placeholder='아이디'
+              onChange={handleChange}
+              name='id'
+              value={id}
             />
             <input
               className={cx('login-inputs')}
               type='password'
               placeholder='비밀번호'
+              onChange={handleChange}
+              name='password'
+              value={password}
             />
           </LoginInputWrapper>
-          <LoginBtn>로그인</LoginBtn>
+          <LoginBtn active={id !== '' && password  !== ''}>로그인</LoginBtn>
           <FindBtnsWrapper>
             <FindBtns>아이디 찾기</FindBtns>|<FindBtns>비밀번호 찾기</FindBtns>
           </FindBtnsWrapper>
         </LoginForm>
-        {/* // </div> */}
       </LoginWrapper>
     );
   }

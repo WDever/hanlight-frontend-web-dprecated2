@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import NoticeItem from './noticeItem';
+import NoticeIcon from '../../lib/svg/notice-icon.svg';
 
 export interface NoticeItemTypes {
   title: string;
@@ -22,27 +23,46 @@ const NoticeListWrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
+  font-family: 'Do Hyeon';
+  /* font-family: 'NanumSquare'; */
 `;
 
 const NoticeListDiv = styled.div`
-  height: 11rem;
+  height: 10.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  font-family: inherit;
 `;
 
 const NoticeTitle = styled.div`
-  width: 90%;
+  width: 100%;
   font-size: 2.25rem;
-  font-family: 'Roboto';
+  font-family: inherit;
 
   display: flex;
   justify-content: space-between;
+`;
+
+const NoticeTitleWrapper = styled.div`
+  display: flex;
+
+  /* justify-content: center; */
+  align-items: center;
+`;
+
+const NoticeIconImg = styled.img`
+  width: 4.625rem;
+  height: 3.4375rem;
+  margin-right: 0.5rem;
 `;
 
 const MoreBtn = styled.button`
   font-size: 1.5rem;
-  font-family: 'Roboto';
+  font-family: inherit;
+  font-weight: bold;
   outline: none;
   border: 0;
   background-color: transparent;
@@ -90,7 +110,10 @@ class NoticeListComponent extends React.Component<
     return (
       <NoticeListWrapper>
         <NoticeTitle>
-          공지사항
+          <NoticeTitleWrapper>
+            <NoticeIconImg src={NoticeIcon} alt='' />
+            공지사항
+          </NoticeTitleWrapper>
           <MoreBtn>
             더보기
           </MoreBtn>

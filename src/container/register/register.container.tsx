@@ -36,7 +36,7 @@ RegisterContainerProps & RegisterMethod & RouteComponentProps
 
 const mapStateToProps = ({ register }: AppState) => ({
   registerStatus: register.registerStatus,
-  // signKey: phoneCheck.signKey,
+  signKey: register.signKey,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<registerReducerActions>) => ({
