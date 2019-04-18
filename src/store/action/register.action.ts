@@ -21,10 +21,7 @@ export interface PhoneCheckResType {
 }
 
 export interface StateResType {
-  success: boolean;
-  data: {
-    state: string;
-  };
+  state: string;
 }
 
 export interface VerifyPhoneParams {

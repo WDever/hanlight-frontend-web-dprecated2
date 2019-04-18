@@ -6,6 +6,7 @@ import PhoneCheckContainer from '../../container/phoneCheck';
 import Welcome from './welcome';
 import { Route } from 'react-router-dom';
 import RegisterComponent from './register';
+import LoginContainer from '../../container/login';
 
 interface SignComponentProps {}
 
@@ -39,7 +40,8 @@ class SignComponent extends React.Component<
     if (whichPage === true) {
       return (
         <PageWrapper>
-          <LoginComponent />
+          {/* <LoginComponent /> */}
+          <LoginContainer />
           <Welcome whichPage={whichPage} handleClick={handleClick} />
           {/* <Route exact path='auth/register' component={RegisterComponent} /> */}
         </PageWrapper>

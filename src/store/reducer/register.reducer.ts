@@ -25,7 +25,8 @@ export const registerReducer = (
         break;
 
       case 'GET_STATE_SUCCESS':
-        draft.state = action.payload.data.state;
+        console.log(action.payload);
+        draft.state = action.payload.state;
         draft.getStateStatus = 'success';
         break;
 

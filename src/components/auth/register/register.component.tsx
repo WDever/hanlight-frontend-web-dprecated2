@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import styles from './register.module.scss';
 import { RegisterContainerProps, RegisterMethod } from '../../../container/register';
 import { RouteComponentProps } from 'react-router-dom';
+import { StyledComponentsProps } from '../phoneCheck'
 
 const cx = classNames.bind(styles);
 
@@ -69,9 +70,11 @@ const Btn = styled.button`
   font-weight: bold;
   width: 28.125rem;
   height: 3.375rem;
-  background-color: #6c63ff;
+  background-color: ${(props: StyledComponentsProps) =>
+    props.active ? '#6c63ff' : 'rgba(108, 99, 255, 0.25)'};
   color: white;
   outline: none;
+  border: none;
   cursor: pointer;
   letter-spacing: 0.5rem;
   display: inline-flex;
@@ -83,6 +86,11 @@ class RegisterComponent extends React.Component<
   RegisterContainerProps & RegisterMethod & RouteComponentProps,
   RegisterComponentState
   > {
+  public state: RegisterComponentState = {
+    id: '',
+    password: '',
+    rePassword: '',
+  }
   public handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     this.setState((state) => ({
@@ -98,12 +106,33 @@ class RegisterComponent extends React.Component<
 
     console.log(this.props);
 
-    register({ id, password, signKey })
+    register({ id, password, signKey });
   }
 
+  public afterSubmit = () => {
+    const { registerStatus, history } = this.props;
+
+    if(registerStatus === 'success') {
+      console.log('성공');
+      history.push('/auth');
+    } else if(registerStatus === 'failure') {
+      alert('실패');
+    }
+  }
+
+  public componentDidUpdate = (prevProps: RegisterContainerProps) => {
+    const { registerStatus } = this.props;
+
+    if(registerStatus !== prevProps.registerStatus) {
+      this.afterSubmit();
+    }
+  }
+  
   public render() {
     const { handleChange, handleSubmit } = this;
     const { signKey, register } = this.props;
+    const { id, password, rePassword} = this.state;
+
     return (
       <RegisterWrapper>
         <GreetingDiv>
@@ -130,14 +159,14 @@ class RegisterComponent extends React.Component<
             />
             <input
               className={cx('sign-up-inputs')}
-              name='re-password'
+              name='rePassword'
               autoComplete='off'
               placeholder='비밀번호 재입력'
               type='password'
               onChange={handleChange}
             />
           </InputWrapper>
-          <Btn>회원가입</Btn>
+          <Btn active={id !== '' && password !== '' && rePassword !== '' }>회원가입</Btn>
         </Form>
       </RegisterWrapper>
     );

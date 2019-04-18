@@ -33,6 +33,7 @@ function* getStateSaga(action: GetState) {
       yield put({ type: GET_STATE_SUCCESS, payload: response.data });
     } catch (e) {
       console.log(e.response);
+      console.log(e);
       yield put({ type: GET_STATE_FAILURE, payload: e.response });
     }
   }
