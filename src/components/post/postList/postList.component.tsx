@@ -59,19 +59,18 @@ class PostListComponent extends React.Component<
       },
     ],
   };
+
   public render() {
     const { PostList } = this.state;
-    const postList = PostList.map((item, idx) => {
-      return (
-        <PostItem
-          userName={item.userName}
-          date={item.date}
-          content={item.content}
-          likeIdx={item.likeIdx}
-          key={idx}
-        />
-      );
-    });
+    const postList = PostList.map((item, idx) => (
+      <PostItem
+        userName={item.userName}
+        date={item.date}
+        content={item.content}
+        likeIdx={item.likeIdx}
+        key={idx}
+      />
+    ));
     return (
       <PostListWrapper>
         <PostListDiv>{postList}</PostListDiv>
