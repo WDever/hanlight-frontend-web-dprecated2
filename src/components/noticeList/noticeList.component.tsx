@@ -9,9 +9,9 @@ export interface NoticeItemTypes {
   lately: boolean;
 }
 
-interface NoticeListComponentProps {}
+interface NoticeListProps {}
 
-interface NoticeListComponentState {
+interface NoticeListState {
   NoticeList: NoticeItemTypes[];
 }
 
@@ -71,10 +71,10 @@ const MoreBtn = styled.button`
 `;
 
 class NoticeListComponent extends React.Component<
-  NoticeListComponentProps,
-  NoticeListComponentState
+  NoticeListProps,
+ NoticeListState 
   > {
-  public state: NoticeListComponentState = {
+  public state: NoticeListState = {
     NoticeList: [
       {
         title: `IT와 디자인에 관련된 인터넷 강의를 제공하는

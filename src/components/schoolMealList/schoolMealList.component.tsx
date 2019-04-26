@@ -1,15 +1,15 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-interface SchoolMealListComponentProps {}
+interface SchoolMealListProps {}
 
-interface SchoolMealListComponentState {}
+interface SchoolMealListState {}
 
 const SchoolMealList = styled.div`
   background-color: #E2F1FF;
 `;
 
-class SchoolMealListComponent extends React.Component<SchoolMealListComponentProps, SchoolMealListComponentState> {
+class SchoolMealListComponent extends React.Component<SchoolMealListProps, SchoolMealListState> {
   public render() {
     return (
       <SchoolMealList />
