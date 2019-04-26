@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-interface HeaderComponentProps {}
+interface HeaderProps {}
 
-interface HeaderComponentState {}
+interface HeaderState {}
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -59,8 +59,8 @@ const HeaderLogout = styled.div`
 `;
 
 class HeaderComponent extends React.Component<
-  HeaderComponentProps,
-  HeaderComponentState
+  HeaderProps,
+  HeaderState
   > {
   public render() {
     return (

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-interface NoticeBannerComponentProps {}
+interface NoticeBannerProps {}
 
-interface NoticeBannerComponentState {}
+interface NoticeBannerState {}
 
 const NoticeBanner = styled.div`
   background-color: #FFE6CF;
@@ -11,7 +11,7 @@ const NoticeBanner = styled.div`
   grid-column-end: 5;
 `;
 
-class NoticeBannerComponent extends React.Component<NoticeBannerComponentProps, NoticeBannerComponentState> {
+class NoticeBannerComponent extends React.Component<NoticeBannerProps, NoticeBannerState> {
   public render() {
     return (
       <NoticeBanner />
