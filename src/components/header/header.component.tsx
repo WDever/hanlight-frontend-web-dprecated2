@@ -7,7 +7,7 @@ interface HeaderComponentState {}
 
 const HeaderWrapper = styled.div`
   display: flex;
-  width: 100%;
+  width: 90%;
   height: 5%;
   background-color: transparent;
   margin-bottom: 2.5rem;
@@ -25,6 +25,10 @@ const HeaderInnerWrapper = styled.div`
   background-color: transparent;
   align-items: center;
   justify-content: space-between;
+
+  font-family: 'NanumSquare';
+  color: black;
+  font-size: 1.125rem;
 `;
 
 const HeaderUser = styled.div`
@@ -62,15 +66,9 @@ class HeaderComponent extends React.Component<
     return (
       <HeaderWrapper>
         <HeaderInnerWrapper>
-          <HeaderUser>
-            User
-          </HeaderUser>
-          <HeaderEdit>
-            내 정보 수정
-          </HeaderEdit>
-          <HeaderLogout>
-            로그아웃
-          </HeaderLogout>
+          <HeaderUser>User</HeaderUser>
+          <HeaderEdit>내 정보 수정</HeaderEdit>
+          <HeaderLogout>로그아웃</HeaderLogout>
         </HeaderInnerWrapper>
       </HeaderWrapper>
     );

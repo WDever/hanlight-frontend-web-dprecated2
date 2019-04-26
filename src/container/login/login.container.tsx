@@ -1,11 +1,16 @@
 import * as React from 'react';
-import LoginComponent from '../../components/auth/login';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
-import { AppState, userAcions, userReducerActions, LoginParams } from '../../store';
+import LoginComponent from '../../components/auth/login';
+import {
+  AppState,
+  userAcions,
+  userReducerActions,
+  LoginParams,
+} from '../../store';
 
-export interface LoginContainerProps {
+export interface LoginProps {
   loginStatus: 'none' | 'pending' | 'success' | 'failure';
 }
 
@@ -14,20 +19,20 @@ export interface LoginMethod {
 }
 
 const LoginContainer: React.SFC<
-LoginContainerProps & LoginMethod & RouteComponentProps
-> = ({ login, history, match, location, loginStatus }) => {
-  return (
-    <LoginComponent
-      login={login}
-      history={history}
-      match={match}
-      location={location}
-      loginStatus={loginStatus}
-    />
-  );
-};
+LoginProps & LoginMethod & RouteComponentProps
+> = ({
+  login, history, match, location, loginStatus,
+}) => (
+  <LoginComponent
+    login={login}
+    loginStatus={loginStatus}
+    history={history}
+    match={match}
+    location={location}
+  />
+);
 
-const mapStateToProps = ({user}: AppState) => ({
+const mapStateToProps = ({ user }: AppState) => ({
   loginStatus: user.loginStatus,
 });
 

@@ -1,16 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { Route } from 'react-router-dom';
 import LoginComponent from './login';
 import PhoneCheckComponent from './phoneCheck';
 import PhoneCheckContainer from '../../container/phoneCheck';
 import Welcome from './welcome';
-import { Route } from 'react-router-dom';
 import RegisterComponent from './register';
 import LoginContainer from '../../container/login';
 
-interface SignComponentProps {}
-
-interface SignComponentState {
+interface AuthState {
   whichPage: boolean;
 }
 
@@ -20,10 +18,10 @@ const PageWrapper = styled.div`
 `;
 
 class SignComponent extends React.Component<
-  SignComponentProps,
-  SignComponentState
+  {},
+  AuthState
   > {
-  public state: SignComponentState = {
+  public state: AuthState = {
     whichPage: true,
   };
 
@@ -46,15 +44,14 @@ class SignComponent extends React.Component<
           {/* <Route exact path='auth/register' component={RegisterComponent} /> */}
         </PageWrapper>
       );
-    } else {
-      return (
-        <PageWrapper>
-          <PhoneCheckContainer />
-          <Welcome whichPage={whichPage} handleClick={handleClick} />
-          {/* <Route exact path='auth/register' component={RegisterComponent} /> */}
-        </PageWrapper>
-      );
     }
+    return (
+      <PageWrapper>
+        <PhoneCheckContainer />
+        <Welcome whichPage={whichPage} handleClick={handleClick} />
+        {/* <Route exact path='auth/register' component={RegisterComponent} /> */}
+      </PageWrapper>
+    );
   }
 }
 

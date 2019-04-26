@@ -2,9 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 import SignUpImgSrc from '../../lib/svg/signUp.svg';
 
-interface SignComponentProps {}
+interface SignProps {}
 
-interface SignComponentState {}
+interface SignState {}
 
 const SignWrapper = styled.div`
   width: 100%;
@@ -87,23 +87,21 @@ const SignBtn = styled.button`
   border: 0;
 `;
 
-class SignComponent extends React.Component<SignComponentProps, SignComponentState> {
+class SignComponent extends React.Component {
   public render() {
     return (
       <SignWrapper>
         <GreetingDiv>
-          <SignUpImg src={SignUpImgSrc} alt='' />
+          <SignUpImg src={SignUpImgSrc} alt="" />
           회원가입
         </GreetingDiv>
         <Form>
           <InputWrapper>
-            <Inputs type='id' placeholder='아이디' />
-            <Inputs type='password' placeholder='비밀번호' />
-            <Inputs type='password' placeholder='비밀번호 재입력' />
+            <Inputs type="id" placeholder="아이디" />
+            <Inputs type="password" placeholder="비밀번호" />
+            <Inputs type="password" placeholder="비밀번호 재입력" />
           </InputWrapper>
-          <SignBtn>
-            회원가입
-          </SignBtn>
+          <SignBtn>회원가입</SignBtn>
         </Form>
       </SignWrapper>
     );

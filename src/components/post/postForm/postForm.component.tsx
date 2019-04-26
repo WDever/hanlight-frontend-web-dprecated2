@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import test from '../../lib/svg/name.svg';
+import test from '../../../lib/svg/name.svg';
 
 interface PostFormComponentState {}
 
@@ -45,8 +45,11 @@ class PostFormComponent extends React.Component<
   public render() {
     return (
       <PostForm>
-        <ProfilePic src={test} alt='' />
-        <PostInput type='text' placeholder='인싸가 되기 위한 지름길, 그것은 대나무 숲에 글 쓰기' />
+        <ProfilePic src={test} alt="" />
+        <PostInput
+          type="text"
+          placeholder="인싸가 되기 위한 지름길, 그것은 대나무 숲에 글 쓰기"
+        />
       </PostForm>
     );
   }

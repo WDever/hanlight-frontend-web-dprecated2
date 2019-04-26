@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import PostItem from '../../../components/postItem';
-import PostForm from '../../../components/postForm';
-import PostList from '../../../components/postList';
+import PostItem from '../../../components/post/postItem';
+import PostForm from '../../../components/post/postForm';
+import PostList from '../../../components/post/postList';
 import NoticeItem from '../../../components/noticeList/noticeItem';
 import NoticeList from '../../../components/noticeList';
 
@@ -20,14 +20,12 @@ const TimeLineWrapper = styled.div`
   align-items: center;
 `;
 
-const TimelinePage: React.SFC<{}> = () => {
-  return (
-    <TimeLineWrapper>
-      <NoticeList />
-      <PostForm />
-      <PostList />
-    </TimeLineWrapper>
-  );
-}
+const TimelinePage: React.SFC<{}> = () => (
+  <TimeLineWrapper>
+    <NoticeList />
+    <PostForm />
+    <PostList />
+  </TimeLineWrapper>
+);
 
 export default TimelinePage;

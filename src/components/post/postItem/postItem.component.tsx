@@ -1,11 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { PostItemTypes } from '../postList/postList.component';
-import ProfilePicture from '../profilePicture';
-import test from '../../lib/svg/name.svg';
-import optionTest from '../../lib/svg/three-dots-more-indicator.svg';
-import LikeSrc from '../../lib/svg/like.svg';
-import EmptyLike from '../../lib/svg/like-empty.svg';
+import test from '../../../lib/svg/name.svg';
+import optionTest from '../../../lib/svg/three-dots-more-indicator.svg';
+import LikeSrc from '../../../lib/svg/like.svg';
+import EmptyLike from '../../../lib/svg/like-empty.svg';
 
 interface PostItemState {}
 
@@ -142,13 +141,21 @@ const LikeBtn = styled.img`
   cursor: pointer;
 `;
 
+const ProfilePic = styled.img`
+  width: 4.0625rem;
+  height: 4.0626rem;
+  border-radius: 50%;
+`;
+
 class PostItem extends React.Component<PostItemProps, PostItemState> {
   public render() {
-    const { userName, date, content, likeIdx } = this.props;
+    const {
+      userName, date, content, likeIdx,
+    } = this.props;
     return (
       <PostItemDiv>
         <ProfileWrapper>
-          <ProfilePicture imgSrc={test} />
+          <ProfilePic src={test} />
           <ProfileNameWrapper>
             <ProfileNameP>{userName}</ProfileNameP>
             <ProfileDate>{date}</ProfileDate>
@@ -161,11 +168,11 @@ class PostItem extends React.Component<PostItemProps, PostItemState> {
         </PostContent>
         <LikeListWrapper>
           <LikeImg src={LikeSrc} />
-          <LikeList>{likeIdx + '명'}</LikeList>
+          <LikeList>{`${likeIdx}명`}</LikeList>
         </LikeListWrapper>
         <CommentWrapper>
           <UserProfilePic src={test} />
-          <CommentInput type='text' placeholder='댓글을 입력하세요' />
+          <CommentInput type="text" placeholder="댓글을 입력하세요" />
           <LikeBtn src={EmptyLike} />
         </CommentWrapper>
       </PostItemDiv>

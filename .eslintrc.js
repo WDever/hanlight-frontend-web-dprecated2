@@ -5,6 +5,7 @@ module.exports = {
     'react-app',
     'plugin:prettier/recommended',
     'prettier',
+    'airbnb',
   ],
   plugins: ['@typescript-eslint', 'react'],
   rules: {
@@ -22,5 +23,15 @@ module.exports = {
     '@typescript-eslint/no-parameter-properties': 0,
     // "@typescript-eslint/no-unused-vars": 0,
     // "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+    'react/prop-types': 0,
+    'react/jsx-filename-extension': [
+      1,
+      { extensions: ['.js', '.jsx', 'tsx', 'ts'] },
+    ],
+    'import/prefer-default-export': 0,
+    'no-param-reassign': 0,
+    'no-empty-function': 0,
+    'no-useless-constructor': 0,
+    'import/no-unresolved': 0,
   },
 };

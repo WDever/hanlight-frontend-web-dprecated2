@@ -46,11 +46,13 @@ export interface RegisterResType {
 
 export class GetState implements Action {
   public readonly type = GET_STATE;
+
   public constructor(public payload: PinType) {}
 }
 
 export class GetStateSuccess implements Action {
   public readonly type = GET_STATE_SUCCESS;
+
   public constructor(public payload: StateResType) {}
 }
 
@@ -58,18 +60,15 @@ export class GetStateFailure implements Action {
   public readonly type = GET_STATE_FAILURE;
 }
 
-export class GetCode implements Action {
-  public readonly type = GET_CODE;
-  public constructor(public payload: PhoneCheckResType) {}
-}
-
 export class VerifyPhone implements Action {
   public readonly type = VERIFY_PHONE;
+
   public constructor(public payload: VerifyPhoneParams) {}
 }
 
 export class VerifyPhoneSuccess implements Action {
   public readonly type = VERIFY_PHONE_SUCCESS;
+
   public constructor(public payload: VerifyPhoneResType) {}
 }
 
@@ -79,11 +78,13 @@ export class VerifyPhoneFailure implements Action {
 
 export class Register implements Action {
   public readonly type = REGISTER;
+
   public constructor(public payload: RegisterParams) {}
 }
 
 export class RegisterSuccess implements Action {
   public readonly type = REGISTER_SUCCESS;
+
   public constructor(public payload: RegisterResType) {}
 }
 
@@ -93,19 +94,16 @@ export class RegisterFailure implements Action {
 
 export const registerActions = {
   getState: createStandardAction(GET_STATE)<PinType>(),
-  getCode: createStandardAction(GET_CODE)<PhoneCheckResType>(),
   verifyPhone: createStandardAction(VERIFY_PHONE)<VerifyPhoneParams>(),
   register: createStandardAction(REGISTER)<RegisterParams>(),
 };
 
-export type registerReducerActions =
-  | GetState
-  | GetStateSuccess
-  | GetStateFailure
-  | GetCode
-  | VerifyPhone
-  | VerifyPhoneSuccess
-  | VerifyPhoneFailure
-  | Register
-  | RegisterSuccess
-  | RegisterFailure;
+export type registerReducerActions = | GetState
+| GetStateSuccess
+| GetStateFailure
+| VerifyPhone
+| VerifyPhoneSuccess
+| VerifyPhoneFailure
+| Register
+| RegisterSuccess
+| RegisterFailure;

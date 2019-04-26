@@ -1,21 +1,15 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import classNames from 'classnames/bind';
 import WelcomeBackgroundImg from '../../../lib/png/group-5.png';
 import styles from './welcome.module.scss';
-import classNames from 'classnames/bind';
 import { FadeIn } from '../login';
 
 const cx = classNames.bind(styles);
 
-interface WelcomeComponentProps {
+interface WelcomeProps {
   whichPage: boolean;
   handleClick(): void;
-}
-
-interface WelcomeComponentState {}
-
-interface SCProps {
-  whichPage: boolean;
 }
 
 const WelcomeWrapper = styled.div`
@@ -80,10 +74,7 @@ const ChangeBtn = styled.button`
   animation: ${FadeIn} 0.5s;
 `;
 
-class WelcomeComponent extends React.Component<
-  WelcomeComponentProps,
-  WelcomeComponentState
-  > {
+class WelcomeComponent extends React.Component<WelcomeProps> {
   public render() {
     const { whichPage, handleClick } = this.props;
 
@@ -94,12 +85,13 @@ class WelcomeComponent extends React.Component<
           whichPage ? 'login-page' : 'sign-up-page',
         )}
       >
-        <WelcomeImg src={WelcomeBackgroundImg} alt='' />
+        <WelcomeImg src={WelcomeBackgroundImg} alt="" />
         <GreetingWrapper>
           <Greeting>
             {whichPage ? '처음이야?' : '오랜만!'}
             <br />
-            <Hansei>한세</Hansei>친구들
+            <Hansei>한세</Hansei>
+            친구들
           </Greeting>
           <ChangeBtn onClick={handleClick}>
             {whichPage ? '회원가입' : '로그인'}

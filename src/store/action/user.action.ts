@@ -28,11 +28,13 @@ export interface LoginResType {
 
 export class Login implements Action {
   public readonly type = LOGIN;
+
   public constructor(public payload: LoginParams) {}
 }
 
 export class LoginSuccess implements Action {
   public readonly type = LOGIN_SUCCESS;
+
   public constructor(public payload: LoginResType) {}
 }
 
