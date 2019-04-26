@@ -1,3 +1,5 @@
+import { put, call, takeEvery } from 'redux-saga/effects';
+import axios from 'axios';
 import {
   LOGIN,
   LOGIN_FAILURE,
@@ -6,16 +8,13 @@ import {
   LoginParams,
   LoginResType,
 } from '../action';
-import { put, call, takeEvery } from 'redux-saga/effects';
-import axios from 'axios';
 
-const loginApi = (data: LoginParams) =>
-  axios
-    .post('http://54.180.114.156:3000/api/verify/login', {
-      id: data.id,
-      password: data.password,
-    })
-    .then(res => res.data);
+const loginApi = (data: LoginParams) => axios
+  .post('http://54.180.114.156:3000/api/verify/login', {
+    id: data.id,
+    password: data.password,
+  })
+  .then(res => res.data);
 
 function* loginSaga(action: Login) {
   if (action.type) {

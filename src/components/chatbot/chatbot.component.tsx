@@ -198,8 +198,8 @@ class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
   };
 
   public handleToggle = async (): Promise<void> => {
-    this.setState(() => ({
-      toggle: !this.state.toggle,
+    this.setState(state => ({
+      toggle: !state.toggle,
     }));
   };
 
@@ -212,15 +212,15 @@ class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
         type: 'send',
         message: input,
       }),
-      input: ''
+      input: '',
     }));
   };
 
   public handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
 
-    this.setState((state) => ({
-      input: value
+    this.setState(state => ({
+      input: value,
     }));
 
     console.log(e.currentTarget.value);
@@ -239,27 +239,25 @@ class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
             </SendBox>
           </SendWrapper>
         );
-      } else {
-        return (
-          <ReceptionWrapper key={idx}>
-            <ReceptionBox>
-              <ReceptionText>{item.message}</ReceptionText>
-            </ReceptionBox>
-          </ReceptionWrapper>
-        );
       }
+      return (
+        <ReceptionWrapper key={idx}>
+          <ReceptionBox>
+            <ReceptionText>{item.message}</ReceptionText>
+          </ReceptionBox>
+        </ReceptionWrapper>
+      );
     });
 
     return (
+      /* eslint-disable */
       <>
         <ChatBotBody style={{ display: toggle ? 'flex' : 'none' }}>
           <ChatBotTopDiv>
             <ChatBotImg src={ChatBotIcon} alt='' />
             한봇
           </ChatBotTopDiv>
-          <ChatBox>
-            {chatList}
-          </ChatBox>
+          <ChatBox>{chatList}</ChatBox>
           <ChatForm onSubmit={handleEnter}>
             <ChatInput
               placeholder='한봇과 안부인사를 해봐요!'
@@ -270,6 +268,7 @@ class ChatBot extends React.Component<ChatBotProps, ChatBotState> {
         </ChatBotBody>
         <Bubble src={ChatBotIcon} alt='' onClick={handleToggle} />
       </>
+      /* eslint-dnable */
     );
   }
 }

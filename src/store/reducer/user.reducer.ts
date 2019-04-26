@@ -21,24 +21,23 @@ const initialState: UserModel = {
 export const userReducer = (
   state: UserModel = initialState,
   action: userReducerActions,
-) =>
-  produce(state, draft => {
-    switch (action.type) {
-      case 'LOGIN':
-        draft.loginStatus = 'pending';
-        break;
+) => produce(state, (draft) => {
+  switch (action.type) {
+    case 'LOGIN':
+      draft.loginStatus = 'pending';
+      break;
 
-      case 'LOGIN_SUCCESS':
-        draft.loginStatus = 'success';
-        draft.userData.accessToken = action.payload.data.accessToken;
-        draft.userData.user = action.payload.data.user;
-        break;
+    case 'LOGIN_SUCCESS':
+      draft.loginStatus = 'success';
+      draft.userData.accessToken = action.payload.data.accessToken;
+      draft.userData.user = action.payload.data.user;
+      break;
 
-      case 'LOGIN_FAILURE':
-        draft.loginStatus = 'failure';
-        break;
+    case 'LOGIN_FAILURE':
+      draft.loginStatus = 'failure';
+      break;
 
-      default:
-        break;
-    }
-  });
+    default:
+      break;
+  }
+});

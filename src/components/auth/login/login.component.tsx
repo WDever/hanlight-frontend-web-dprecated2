@@ -1,18 +1,15 @@
 import * as React from 'react';
-import { LoginMethod } from '../../../container/login';
 import styled, { keyframes } from 'styled-components';
 import { RouteComponentProps } from 'react-router-dom';
-import { LoginContainerProps } from '../../../container/login';
 import classNames from 'classnames/bind';
+import { LoginProps, LoginMethod } from '../../../container/login';
 import styles from './login.component.module.scss';
 import LoginImgSrc from '../../../lib/svg/login.svg';
-import { StyledComponentsProps } from '../phoneCheck/';
+import { StyledComponentsProps } from '../phoneCheck';
 
 const cx = classNames.bind(styles);
 
-interface LoginComponentProps {}
-
-interface LoginComponentState {
+interface LoginState {
   id: string;
   password: string;
 }
@@ -80,8 +77,7 @@ const LoginBtn = styled.button`
   font-weight: 800;
   width: 28.125rem;
   height: 3.375rem;
-  background-color: ${(props: StyledComponentsProps) =>
-    props.active ? '#6c63ff' : 'rgba(108, 99, 255, 0.25)'};
+  background-color: ${(props: StyledComponentsProps) => (props.active ? '#6c63ff' : 'rgba(108, 99, 255, 0.25)')};
   color: white;
   outline: none;
   border: none;
@@ -109,12 +105,24 @@ const FindBtns = styled.button`
 `;
 
 class LoginComponent extends React.Component<
-  LoginContainerProps & LoginMethod & RouteComponentProps,
-  LoginComponentState
+  LoginProps & LoginMethod & RouteComponentProps,
+  LoginState
   > {
-  public state: LoginComponentState = {
+  public state: LoginState = {
     id: '',
     password: '',
+  };
+
+  public componentDidUpdate(prevProps: LoginProps) {
+    const { loginStatus, history } = this.props;
+    if (loginStatus !== prevProps.loginStatus) {
+      // after try to login
+      if (loginStatus === 'success') {
+        history.push('/');
+      } else if (loginStatus === 'failure') {
+        alert('로그인 실패');
+      }
+    }
   }
 
   public handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -123,11 +131,9 @@ class LoginComponent extends React.Component<
       ...state,
       [name]: value,
     }));
-
-    console.log(this.state);
   };
 
-  public handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  public submitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     const { login } = this.props;
     const { id, password } = this.state;
     e.preventDefault();
@@ -138,63 +144,56 @@ class LoginComponent extends React.Component<
     login({ id, password });
   };
 
-  public afterLogin = () => {
-    const { history, loginStatus } = this.props;
+  // public afterLogin = () => {
+  //   const { history, loginStatus } = this.props;
 
-    console.log(loginStatus);
+  //   console.log(loginStatus);
 
-    if (loginStatus === 'success') {
-      console.log(loginStatus);
-      history.push('/');
-    } else if (loginStatus === 'failure') {
-      console.log(loginStatus);
-      alert('로그인 실패');
-      history.push('/');
-    }
-    console.log(loginStatus);
-  };
-
-  public componentDidUpdate = (prevProps: LoginContainerProps) => {
-    const { loginStatus } = this.props;
-    if (loginStatus !== prevProps.loginStatus && (loginStatus === 'success' || loginStatus === 'failure')) {
-      console.log(prevProps);
-      console.log(this.props);
-      this.afterLogin();
-    }
-  };
+  //   if (loginStatus === 'success') {
+  //     console.log(loginStatus);
+  //     history.push('/');
+  //   } else if (loginStatus === 'failure') {
+  //     console.log(loginStatus);
+  //     alert('로그인 실패');
+  //     history.push('/');
+  //   }
+  //   console.log(loginStatus);
+  // };
 
   public render() {
-    const { handleSubmit, handleChange } = this;
+    const { submitLogin, handleChange } = this;
     const { id, password } = this.state;
 
     return (
       <LoginWrapper>
         <GreetingDiv>
-          <LoginImg src={LoginImgSrc} alt='' />
+          <LoginImg src={LoginImgSrc} alt="" />
           한빛에 오신 것을 환영합니다
         </GreetingDiv>
-        <LoginForm onSubmit={handleSubmit}>
+        <LoginForm onSubmit={submitLogin}>
           <LoginInputWrapper>
             <input
               className={cx('login-inputs')}
-              type='id'
-              placeholder='아이디'
+              type="id"
+              placeholder="아이디"
               onChange={handleChange}
-              name='id'
+              name="id"
               value={id}
             />
             <input
               className={cx('login-inputs')}
-              type='password'
-              placeholder='비밀번호'
+              type="password"
+              placeholder="비밀번호"
               onChange={handleChange}
-              name='password'
+              name="password"
               value={password}
             />
           </LoginInputWrapper>
-          <LoginBtn active={id !== '' && password  !== ''}>로그인</LoginBtn>
+          <LoginBtn active={!!(id && password)}>로그인</LoginBtn>
           <FindBtnsWrapper>
-            <FindBtns>아이디 찾기</FindBtns>|<FindBtns>비밀번호 찾기</FindBtns>
+            <FindBtns>아이디 찾기</FindBtns>
+|
+            <FindBtns>비밀번호 찾기</FindBtns>
           </FindBtnsWrapper>
         </LoginForm>
       </LoginWrapper>

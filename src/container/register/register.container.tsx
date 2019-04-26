@@ -1,16 +1,16 @@
 import * as React from 'react';
-import RegisterComponent from '../../components/auth/register';
 import { bindActionCreators, Dispatch } from 'redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   AppState,
   registerActions,
   registerReducerActions,
   RegisterParams,
 } from '../../store';
-import { connect } from 'react-redux';
+import RegisterComponent from '../../components/auth/register';
 
-export interface RegisterContainerProps {
+export interface RegisterProps {
   registerStatus: 'none' | 'pending' | 'success' | 'failure';
   signKey: string;
 }
@@ -20,19 +20,19 @@ export interface RegisterMethod {
 }
 
 const RegisterContainer: React.SFC<
-RegisterContainerProps & RegisterMethod & RouteComponentProps
-> = ({ registerStatus, signKey, register, history, match, location }) => {
-  return (
-    <RegisterComponent
-      signKey={signKey}
-      register={register}
-      registerStatus={registerStatus}
-      history={history}
-      match={match}
-      location={location}
-    />
-  );
-};
+RegisterProps & RegisterMethod & RouteComponentProps
+> = ({
+  registerStatus, signKey, register, history, match, location,
+}) => (
+  <RegisterComponent
+    signKey={signKey}
+    register={register}
+    registerStatus={registerStatus}
+    history={history}
+    match={match}
+    location={location}
+  />
+);
 
 const mapStateToProps = ({ register }: AppState) => ({
   registerStatus: register.registerStatus,

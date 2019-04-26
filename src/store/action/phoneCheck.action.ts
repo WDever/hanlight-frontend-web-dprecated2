@@ -36,11 +36,13 @@ export interface VerifyPhoneRes {
 
 export class GetState implements Action {
   public readonly type = GET_STATE;
+
   public constructor(public payload: PinType) {}
 }
 
 export class GetStateSuccess implements Action {
   public readonly type = GET_STATE_SUCCESS;
+
   public constructor(public payload: StateResType) {}
 }
 
@@ -50,16 +52,19 @@ export class GetStateFailure implements Action {
 
 export class GetCode implements Action {
   public readonly type = GET_CODE;
+
   public constructor(public payload: PhoneCheckResType) {}
 }
 
 export class VerifyPhone implements Action {
   public readonly type = VERIFY_PHONE;
+
   public constructor(public payload: VerifyPhoneParams) {}
 }
 
 export class VerifyPhoneSuccess implements Action {
   public readonly type = VERIFY_PHONE_SUCCESS;
+
   public constructor(public payload: VerifyPhoneRes) {}
 }
 
@@ -73,11 +78,10 @@ export const phoneCheckActions = {
   verifyPhone: createStandardAction(VERIFY_PHONE)<VerifyPhoneParams>(),
 };
 
-export type phoneCheckReducerActions =
-  | GetState
-  | GetStateSuccess
-  | GetStateFailure
-  | GetCode
-  | VerifyPhone
-  | VerifyPhoneSuccess
-  | VerifyPhoneFailure;
+export type phoneCheckReducerActions = | GetState
+| GetStateSuccess
+| GetStateFailure
+| GetCode
+| VerifyPhone
+| VerifyPhoneSuccess
+| VerifyPhoneFailure;

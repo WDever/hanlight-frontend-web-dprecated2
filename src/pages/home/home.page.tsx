@@ -13,7 +13,7 @@ import classSchedule from '../../lib/svg/schedule.svg';
 import schoolSchedule from '../../lib/svg/school-schedule.svg';
 import TimelinePage from './timeline';
 import BackgroundImg from '../../lib/png/background.png';
-// import Test from '../../lib/svg/bg2.svg';
+import SideBarComponent from '../../components/sideBar';
 
 const cx = classNames.bind(styles);
 
@@ -24,13 +24,23 @@ const Background = styled.img`
   position: absolute;
 `;
 
-const HomePage: React.SFC<{}> = () => {
-  return (
+const MainWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+`;
+
+const HomePage: React.SFC<{}> = () => (
+    /* eslint-disable */
     <>
+      <MainWrapper>
+        <SideBarComponent />
+        <HeaderComponent />
+      </MainWrapper>
       <TimelinePage />
       <ChatBot />
     </>
-  );
-};
+    /* eslint-enable */
+);
 
 export default HomePage;

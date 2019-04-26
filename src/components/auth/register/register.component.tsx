@@ -1,15 +1,15 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import SignUpImgSrc from '../../../lib/svg/signUp.svg';
 import classNames from 'classnames/bind';
-import styles from './register.module.scss';
-import { RegisterContainerProps, RegisterMethod } from '../../../container/register';
 import { RouteComponentProps } from 'react-router-dom';
-import { StyledComponentsProps } from '../phoneCheck'
+import SignUpImgSrc from '../../../lib/svg/signUp.svg';
+import styles from './register.module.scss';
+import { RegisterProps, RegisterMethod } from '../../../container/register';
+import { StyledComponentsProps } from '../phoneCheck';
 
 const cx = classNames.bind(styles);
 
-interface RegisterComponentState {
+interface RegisterState {
   id: string;
   password: string;
   rePassword: string;
@@ -54,7 +54,6 @@ const InputWrapper = styled.div`
   justify-content: space-around;
 `;
 
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -70,8 +69,7 @@ const Btn = styled.button`
   font-weight: bold;
   width: 28.125rem;
   height: 3.375rem;
-  background-color: ${(props: StyledComponentsProps) =>
-    props.active ? '#6c63ff' : 'rgba(108, 99, 255, 0.25)'};
+  background-color: ${(props: StyledComponentsProps) => (props.active ? '#6c63ff' : 'rgba(108, 99, 255, 0.25)')};
   color: white;
   outline: none;
   border: none;
@@ -83,23 +81,37 @@ const Btn = styled.button`
 `;
 
 class RegisterComponent extends React.Component<
-  RegisterContainerProps & RegisterMethod & RouteComponentProps,
-  RegisterComponentState
+  RegisterProps & RegisterMethod & RouteComponentProps,
+  RegisterState
   > {
-  public state: RegisterComponentState = {
+  public state: RegisterState = {
     id: '',
     password: '',
     rePassword: '',
-  }
-  public handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const { name, value } = e.currentTarget;
-    this.setState((state) => ({
-      ...state,
-      [name]: value,
-    }))
+  };
+
+  public componentDidUpdate(prevProps: RegisterProps) {
+    const { registerStatus, history } = this.props;
+
+    if (registerStatus !== prevProps.registerStatus) {
+      if (registerStatus === 'success') {
+        console.log('성공');
+        history.push('/auth');
+      } else if (registerStatus === 'failure') {
+        alert('실패');
+      }
+    }
   }
 
-  public handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  public handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget;
+    this.setState(state => ({
+      ...state,
+      [name]: value,
+    }));
+  };
+
+  public submitRegister = (e: React.FormEvent<HTMLFormElement>) => {
     const { register, signKey } = this.props;
     const { id, password } = this.state;
     e.preventDefault();
@@ -107,66 +119,57 @@ class RegisterComponent extends React.Component<
     console.log(this.props);
 
     register({ id, password, signKey });
-  }
+  };
 
-  public afterSubmit = () => {
-    const { registerStatus, history } = this.props;
+  // public afterSubmit = () => {
+  //   const { registerStatus, history } = this.props;
 
-    if(registerStatus === 'success') {
-      console.log('성공');
-      history.push('/auth');
-    } else if(registerStatus === 'failure') {
-      alert('실패');
-    }
-  }
+  //   if (registerStatus === 'success') {
+  //     console.log('성공');
+  //     history.push('/auth');
+  //   } else if (registerStatus === 'failure') {
+  //     alert('실패');
+  //   }
+  // };
 
-  public componentDidUpdate = (prevProps: RegisterContainerProps) => {
-    const { registerStatus } = this.props;
-
-    if(registerStatus !== prevProps.registerStatus) {
-      this.afterSubmit();
-    }
-  }
-  
   public render() {
-    const { handleChange, handleSubmit } = this;
-    const { signKey, register } = this.props;
-    const { id, password, rePassword} = this.state;
+    const { handleChange, submitRegister } = this;
+    const { id, password, rePassword } = this.state;
 
     return (
       <RegisterWrapper>
         <GreetingDiv>
-          <Img src={SignUpImgSrc} alt='' />
+          <Img src={SignUpImgSrc} alt="" />
           계정 생성
         </GreetingDiv>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={submitRegister}>
           <InputWrapper>
             <input
               className={cx('sign-up-inputs')}
-              type='text'
-              placeholder='아이디'
-              name='id'
-              autoComplete='off'
+              type="text"
+              placeholder="아이디"
+              name="id"
+              autoComplete="off"
               onChange={handleChange}
             />
             <input
               className={cx('sign-up-inputs')}
-              type='password'
-              name='password'
-              autoComplete='off'
-              placeholder='비밀번호'
+              type="password"
+              name="password"
+              autoComplete="off"
+              placeholder="비밀번호"
               onChange={handleChange}
             />
             <input
               className={cx('sign-up-inputs')}
-              name='rePassword'
-              autoComplete='off'
-              placeholder='비밀번호 재입력'
-              type='password'
+              name="rePassword"
+              autoComplete="off"
+              placeholder="비밀번호 재입력"
+              type="password"
               onChange={handleChange}
             />
           </InputWrapper>
-          <Btn active={id !== '' && password !== '' && rePassword !== '' }>회원가입</Btn>
+          <Btn active={!!(id && password && rePassword)}>회원가입</Btn>
         </Form>
       </RegisterWrapper>
     );
